@@ -1,0 +1,55 @@
+tree_tree_homepage:
+    pattern:  /
+    defaults: { _controller:TreeTreeBundle:Home:index }
+tree_tree_mytree:
+    pattern: /mytree/{nodeid}
+    defaults: { _controller: TreeTreeBundle:User:mytree, nodeid : 0 }
+tree_tree_member_register:
+    pattern: /member/register
+    defaults: { _controller: TreeTreeBundle:User:register }
+tree_tree_sms_verify:
+    pattern: /smsverify/{mobilecode}/{userhash}/{attempt}
+    defaults: { _controller: TreeTreeBundle:User:smsverify, attempt : 1}
+tree_tree_sms_resend:
+    pattern: /sms/resend/{userhash}
+    defaults: { _controller: TreeTreeBundle:User:smsresend }
+tree_tree_login:
+   pattern: /login
+   defaults: { _controller: TreeTreeBundle:User:login }
+tree_tree_logout:
+   pattern: /logout
+   defaults: { _controller: TreeTreeBundle:User:logout }
+admin_admin_login:
+    pattern: /directorship
+    defaults: { _controller: AdminAdminBundle:Admin:login }
+tree_tree_addnode:
+    pattern: /node/add/{nodeid}/{relationid}/{relnodeid}
+    defaults: { _controller: TreeTreeBundle:Tree:addnode, relnodeid : 0 }
+admin_admin_dashboard:
+    pattern: /directorship/dashboard
+    defaults: { _controller: AdminAdminBundle:Admin:dashboard }   
+admin_admin_userdetails:
+    pattern: /directorship/userdetails
+    defaults: { _controller: AdminAdminBundle:Admin:userdetails }
+tree_tree_member_activate_email:
+    pattern: /member/emailactivation/{userid}/{userhash}
+    defaults: { _controller: TreeTreeBundle:User:emailactivation }
+tree_tree_member_change_password:
+    pattern: /member/chnagepassword/{sessionhash}/{attempt}
+    defaults: { _controller: TreeTreeBundle:User:changepassword, attempt : 0 }
+tree_tree_update_profile:
+    pattern: /member/updateprofile/{attempt}
+    defaults: { _controller: TreeTreeBundle:User:updateprofile, attempt: 0 }
+admin_admin_userprofile:
+    pattern: /directorship/userprofile/{email}
+    defaults: { _controller: AdminAdminBundle:Admin:userprofile}
+admin_admin_deleteuser:
+    pattern: /directorship/deleteuser/{email}
+    defaults: { _controller: AdminAdminBundle:Admin:deleteuser }
+admin_admin_updateuser:
+    pattern: /directorship/updateuser/{email}
+    defaults: { _controller: AdminAdminBundle:Admin:updateuser }
+tree_tree_test_node:
+    pattern: /test/node1
+    defaults: { _controller: TreeTreeBundle:Test:node1 }
+

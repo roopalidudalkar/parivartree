@@ -1,0 +1,30 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	{% for flashMessage in app.session.flashbag.get('error') %}
+	
+		{{ flashMessage }}
+
+	{% endfor %}
+
+ 
+	{% block login %}
+		<div class="container admin-container">
+			<div class="form-signin">
+			{{ form_start(form) }}
+				<h2 class="form-signin-heading">Admin Login</h2>
+				
+				
+				{{ form_widget(form.email) }}
+				 {{ form_widget(form.password) }}
+			<div class="form-group">
+				 {{ form_row(form.Submit) }}
+			</div>
+		{{ form_end(form) }}
+			</div>
+		</div>
+	{% endblock %}
+{% endblock %}
+
+
+ 

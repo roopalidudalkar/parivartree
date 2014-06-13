@@ -1,0 +1,288 @@
+body{
+	font-family: 'Noto Sans', sans-serif;
+}
+
+.top-header{
+	border-bottom: 0 none;
+    box-shadow: 1px 6px 15px -6px rgba(50, 50, 50, 0.75);
+    position: relative;
+}
+
+.navbar-brand{
+	padding:0px;
+	margin-top:10px;
+}
+
+.jumbotron {
+       background: url("../img/bg.jpg");
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.login-block {
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.login-block .btn-primary{
+	
+}
+
+.login-block .form-group{
+	margin-bottom:4px;
+}
+
+.login-block label{
+	font-weight:normal;
+	font-size:13px;
+}
+
+.login-block a{
+	color: #046ea0;
+    font-weight: normal;
+	font-size:12px;
+}
+
+.login-block .checkbox input{
+	height:12px;
+}
+
+.login-block .checkbox{
+	margin:0px;
+}
+
+.form-control:focus{
+	border-color: #66AFE9;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075) inset, 0 0 0px rgba(102, 175, 233, 0.6);
+    outline: 0 none;
+}
+
+.login-block input{
+	box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075) inset;
+	height:28px;
+}
+
+.login-block .col-md-5, .login-block .col-md-2, .signup-left-block .col-md-6 {
+	padding-left:4px;
+	padding-right:4px;
+}
+
+.login-block .btn-primary{
+	margin-top:24px;
+	background:#046ea0;
+}
+
+.signup-left-block h1{
+	color: #FFFFFF;
+    font-size: 34px;
+    font-weight: 600;
+}
+
+.signup-left-block h2{
+	color: #FFFFFF;
+    font-size: 20px;
+    margin-top: 0;
+}
+
+.signup-left-block p{
+	color: #FFFFFF;
+    font-size: 13px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-top: 10px;
+}
+
+.or{
+    height: 35px;
+    text-align: center;
+}
+
+.or span{
+	text-align:center;
+	background:#eee;
+	border-radius:15px;
+	padding:4px;
+}
+
+.gender{
+	color:#fff;
+	font-size:18px;
+}
+
+.gender span{
+	padding-right:10px;
+}
+
+.sign-up{
+	background:#ff7200;
+	border:#ff7200;
+}
+
+.footer{
+	width:100%;
+	float:left;
+}
+
+.footer p{
+	 font-size: 12px;
+    padding-top: 10px;
+}
+
+.follow{
+	text-align:right;
+	padding-top:10px;
+}
+
+.banner-right{
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    border-top: 8px solid #046EA0;
+    height: 371px;
+    margin: 69px auto auto;
+    width: 94%;
+}
+
+.jumbotron .col-md-7{
+	text-align:center;
+}
+
+.banner-right h1{
+	 color: #EEEEEE;
+    font-size: 24px;
+    line-height: 29px;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+
+.banner-block span{
+	background:#eee;
+	width:200px;
+	height:30px;
+	border-radius:4px;
+}
+
+.form-signin{
+	width:300px;
+	padding:10px;
+	margin:auto;
+}
+
+.banner-block .box{
+	 background: none repeat scroll 0 0 #EEEEEE;
+    border-radius: 5px;
+    float: left;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 6px;
+    width: 78%;
+}
+
+.banner-block{
+	padding:10px;
+	text-align:center;
+}
+
+.inner-block-cont{
+	background:#eee;
+	height:400px;
+	padding:40px;
+}
+
+.confirm-password{
+	 background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 5px;
+    margin: auto;
+    padding: 20px;
+    width: 480px;
+	margin-bottom:10px;
+}
+
+.confirm-password h1{
+	border-bottom: 1px solid #EEEEEE;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    padding-bottom: 12px;
+}
+
+.banner-block p{
+	margin-bottom:0px;
+	color:#fff;
+	
+}
+
+.banner-block span{
+    float: left;
+    height: 58px;
+    width: 100%;
+}
+
+.banner-block .bk1{
+	background: url(../img/join.png);
+	background-repeat:no-repeat;
+	background-position:center;
+}
+
+.banner-block .bk2{
+	background: url(../img/invite.png);
+	background-repeat:no-repeat;
+	background-position:center;
+}
+
+.banner-block .bk3{
+	background: url(../img/share.png);
+	background-repeat:no-repeat;
+	background-position:center;
+}
+
+.banner-block .bk4{
+	background: url(../img/smile.png);
+	background-repeat:no-repeat;
+	background-position:center;
+}
+
+.need-help{
+	color: #e5e5e5;
+    float: left;
+    font-size: 13px;
+    padding-bottom: 10px;
+    padding-top: 39px;
+    width: 100%;
+}
+
+.available-block{
+	width:100%;
+	float:left;
+	background:#046ea0;
+	padding:10px;
+}
+
+.available-block h3{
+	font-size:18px;
+	font-weight:600;
+	text-transform:uppercase;
+	color:#FFF;
+	margin:0px;
+	margin-top:10px;
+}
+
+.available-block .col-md-4{
+	margin:0px;
+	padding:0px;
+}
+
+.header-top-block{
+	border-bottom: 0 none;
+    box-shadow: 1px 6px 15px -6px rgba(50, 50, 50, 0.75);
+    position: relative;
+}
+
+
+	
+	
+
+
+
+
+
+

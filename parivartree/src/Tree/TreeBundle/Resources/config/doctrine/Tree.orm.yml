@@ -1,0 +1,23 @@
+Tree\TreeBundle\Entity\Tree:
+    type: entity
+    table: parivar_tree
+    id:
+        id: 
+            type: integer
+            length: '11'
+            generator: { strategy: AUTO }
+    fields: 
+        nodeid: 
+            type: integer
+            length: '7'
+        relnodeid: 
+            type: integer
+            length: '11'
+        position:
+            type: integer
+            length: '11'
+        relationid: 
+            type: integer
+            length: '11'
+
+        

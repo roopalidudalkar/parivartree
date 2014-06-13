@@ -1,0 +1,227 @@
+{% extends '::base.html.twig' %}
+
+{% block js %}
+<style>
+.dispnone{
+display:none;
+
+}
+</style>
+<script src="{{ asset('js/bootstrap.js') }}"></script>
+<script>
+jQuery(document).ready(function() {
+        $("#org").jOrgChart({
+            chartElement : '#chart',
+            dragAndDrop  : false
+        });	
+        
+	$('#chart').hover(function() {
+	 $(this).css('cursor','pointer');
+	 }, function() {
+	 $(this).css('cursor','auto');
+	});
+	
+	$('div.Node').hover(
+		function() { 
+			var $class = $(this).attr('class');
+			 $(this).parent().find('.Node-bottom').show();
+				
+		},
+		function() { 
+			var $class = $(this).attr('class');
+			 $(this).parent().find(".Node-bottom").hide();
+				
+		}
+	
+	);
+	
+	$('.add-relation').click(function(ev) {
+    ev.preventDefault(); // preventDefault should suffice, no return false
+    
+		var $parentobj = $(this).parent();
+		var $opt = $($parentobj).find(".Node-title").attr('id');
+		var $host = window.location.host;
+		$('a[id^="modalpop"]').each(function() {
+			var $href = $(this).attr("href");
+		    var $newhref = "http://"+$host+$href.replace('ID',$opt);
+			$(this).attr('href',$newhref);
+		});
+			$('#myModal').modal();
+	});
+	
+	$('a[id="modalpop"]').click(function(ev) {
+	 ev.preventDefault(); // preventDefault should suffice, no return false
+		//alert('alert');
+			//$('#modal').modal('remote');
+	});
+	
+	$("#chart").draggable();
+  });
+</script>
+
+
+
+{% endblock %}
+{% block body %}
+{{ dump(tree) }}
+
+{% set iterated = 0 %}
+{% set parentiterated = 0 %}
+{% set spouseiterated = 0%}
+<ul id="org" style="display:none" >
+{% for value in tree %}
+	{% for subvalue in value %}
+		
+			{%if (subvalue['relationid']==1) or (subvalue['relationid']==2)  %}
+				{%if (subvalue['relationid']==1) %}
+					<li id="father">
+							
+									<span class="online-active"><a href="#"></a></span>
+									<span class="add-relation"><a href="#" ></a></span>
+									<div class="profile-img"><a href="#"></a></div>
+									<div class="Node-title" id={{ subvalue['id'] }}>Rahul Heaven</div>
+									<div class="Node-loc"><span></span><a href="#">Bangalore</a></div>
+									<div class="Node-bottom" style="display:none;">
+										<div class="Node-block photo"><a href="#"></a></div>
+										<div class="Node-block mail"><a href="#"></a></div>
+										<div class="Node-block video"><a href="#"></a></div>
+										<div class="Node-block invite"><a href="#">invite</a></div>
+									</div>
+						
+				{%else%}
+					<span class="spouse1" style="display:none;"> 
+							
+									<span class="online-active"><a href="#"></a></span>
+									<span class="add-relation"><a href="#"></a></span>
+									<div class="profile-img"><a href="#"></a></div>
+									<div class="Node-title" id={{ subvalue['id'] }}>Rahul Heaven</div>
+									<div class="Node-loc"><span></span><a href="#">Bangalore</a></div>
+									<div class="Node-bottom" style="display:none;">
+										<div class="Node-block photo"><a href="#"></a></div>
+										<div class="Node-block mail"><a href="#"></a></div>
+										<div class="Node-block video"><a href="#"></a></div>
+										<div class="Node-block invite"><a href="#">invite</a></div>
+									</div>
+							
+					</span>
+
+					<ul>	
+				{%endif%}
+					
+			{% elseif (subvalue['relationid']==0) or (subvalue['relationid']==3) or  (subvalue['relationid']==4) or  (subvalue['relationid']==5) or  (subvalue['relationid']==6) or  (subvalue['relationid']==7)  %}
+				{% if (subvalue['relationid']==0) or (subvalue['relationid']==3) or  (subvalue['relationid']==6) or  (subvalue['relationid']==7)%}
+					{% if (subvalue['relationid']==0) %}
+						<li id="son">
+							
+									<span class="online-active"><a href="#"></a></span>
+									<span class="add-relation"><a href="#"></a></span>
+									<div class="profile-img"><a href="#"></a></div>
+									<div class="Node-title" id={{ subvalue['id'] }}>Rahul Heaven</div>
+									<div class="Node-loc"><span></span><a href="#">Bangalore</a></div>
+									<div class="Node-bottom" style="display:none;">
+										<div class="Node-block photo"><a href="#"></a></div>
+										<div class="Node-block mail"><a href="#"></a></div>
+										<div class="Node-block video"><a href="#"></a></div>
+										<div class="Node-block invite"><a href="#">invite</a></div>
+									</div>
+							
+					{% elseif (subvalue['relationid']==3) or (subvalue['relationid']==8) %}
+						<span class="wH1" style="display:none;">
+							
+									<span class="online-active"><a href="#"></a></span>
+									<span class="add-relation"><a href="#"></a></span>
+									<div class="profile-img"><a href="#"></a></div>
+									<div class="Node-title" id={{ subvalue['id'] }}>Rahul Heaven</div>
+									<div class="Node-loc"><span></span><a href="#">Bangalore</a></div>
+									<div class="Node-bottom" style="display:none;">
+										<div class="Node-block photo"><a href="#"></a></div>
+										<div class="Node-block mail"><a href="#"></a></div>
+										<div class="Node-block video"><a href="#"></a></div>
+										<div class="Node-block invite"><a href="#">invite</a></div>
+									</div>
+													
+						</span><ul>
+						{% set spouseiterated = 1%}
+					{% elseif (subvalue['relationid']==6) or  (subvalue['relationid']==7) %}
+						<li>
+							
+									<span class="online-active"><a href="#"></a></span>
+									<span class="add-relation"><a href="#"></a></span>
+									<div class="profile-img"><a href="#"></a></div>
+									<div class="Node-title" id={{ subvalue['id'] }}>Rahul Heaven</div>
+									<div class="Node-loc"><span></span><a href="#">Bangalore</a></div>
+									<div class="Node-bottom" style="display:none;">
+										<div class="Node-block photo"><a href="#"></a></div>
+										<div class="Node-block mail"><a href="#"></a></div>
+										<div class="Node-block video"><a href="#"></a></div>
+										<div class="Node-block invite"><a href="#">invite</a></div>
+									</div>
+							
+						</li>
+					{% endif %}
+				{% elseif  (subvalue['relationid']==4) or  (subvalue['relationid']==5) %}
+							{% if iterated == 0 %}
+								{% if spouseiterated == 1%}
+									</ul>
+								{% endif %}
+									</li>
+								{% set iterated = 1 %}
+							{% endif %}
+					<li>
+						
+									<span class="online-active"><a href="#"></a></span>
+									<span class="add-relation"><a href="#"></a></span>
+									<div class="profile-img"><a href="#"></a></div>
+									<div class="Node-title" id={{ subvalue['id'] }}>Rahul Heaven</div>
+									<div class="Node-loc"><span></span><a href="#">Bangalore</a></div>
+									<div class="Node-bottom" style="display:none;">
+										<div class="Node-block photo"><a href="#"></a></div>
+										<div class="Node-block mail"><a href="#"></a></div>
+										<div class="Node-block video"><a href="#"></a></div>
+										<div class="Node-block invite"><a href="#">invite</a></div>
+									</div>
+												
+					</li>
+				{% endif %}
+			{% endif %}
+      	{% endfor %}
+{% endfor %}
+</ul></li></ul>            
+    
+    <div id="chart" class="orgChart"></div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Choose your new Relationship</h4>
+      </div>
+      <div class="modal-body">
+			<a data-toggle="modal" href="{{ path('tree_tree_addnode',{'nodeid':'ID','relationid':1}) }}" data-target="#modal" id="modalpop" class="btn btn-primary btn-large">Father</a>
+			<a data-toggle="modal" href="{{ path('tree_tree_addnode',{'nodeid':'ID','relationid':2}) }}" data-target="#modal" id="modalpop" class="btn btn-primary btn-large">Mother</a>
+			<a data-toggle="modal" href="{{ path('tree_tree_addnode',{'nodeid':'ID','relationid':3}) }}" data-target="#modal" id="modalpop" class="btn btn-primary btn-large">Partner</a>
+			<a data-toggle="modal" href="{{ path('tree_tree_addnode',{'nodeid':'ID','relationid':4}) }}" data-target="#modal" id="modalpop" class="btn btn-primary btn-large">Brother</a>
+			<a data-toggle="modal" href="{{ path('tree_tree_addnode',{'nodeid':'ID','relationid':5}) }}" data-target="#modal" id="modalpop" class="btn btn-primary btn-large">Sister</a>
+			<a data-toggle="modal" href="{{ path('tree_tree_addnode',{'nodeid':'ID','relationid':6}) }}" data-target="#modal" id="modalpop" class="btn btn-primary btn-large">Son</a>
+			<a data-toggle="modal" href="{{ path('tree_tree_addnode',{'nodeid':'ID','relationid':7}) }}" data-target="#modal" id="modalpop" class="btn btn-primary btn-large">Daughter</a>
+      </div>
+    
+    </div>
+  </div>
+</div>   
+
+			<a data-toggle="modal" href="{{ asset('test.html') }}" data-target="#modal" id="modalpop" class="btn btn-primary btn-large">Father</a>
+			<a data-toggle="modal" href="{{ path('tree_tree_addnode',{'nodeid':'ID','relationid':2}) }}" data-target="#modal" id="modalpop" class="btn btn-primary btn-large">Mother</a>
+			<a data-toggle="modal" href="{{ path('tree_tree_addnode',{'nodeid':'ID','relationid':3}) }}" data-target="#modal" id="modalpop" class="btn btn-primary btn-large">Partner</a>
+			<a data-toggle="modal" href="{{ path('tree_tree_addnode',{'nodeid':'ID','relationid':4}) }}" data-target="#modal" id="modalpop" class="btn btn-primary btn-large">Brother</a>
+			<a data-toggle="modal" href="{{ path('tree_tree_addnode',{'nodeid':'ID','relationid':5}) }}" data-target="#modal" id="modalpop" class="btn btn-primary btn-large">Sister</a>
+			<a data-toggle="modal" href="{{ path('tree_tree_addnode',{'nodeid':'ID','relationid':6}) }}" data-target="#modal" id="modalpop" class="btn btn-primary btn-large">Son</a>
+			<a data-toggle="modal" href="{{ path('tree_tree_addnode',{'nodeid':'ID','relationid':7}) }}" data-target="#modal" id="modalpop" class="btn btn-primary btn-large">Daughter</a>
+
+<script type="text/javascript">
+
+</script>
+{% endblock %}

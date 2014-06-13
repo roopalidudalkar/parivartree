@@ -1,0 +1,84 @@
+{% extends '::base.html.twig' %}
+
+
+
+
+{% block body %}
+<div class="navbar navbar-default " role="navigation">
+      <div class="container-fluid container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Parivar Tree</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{{ path('admin_admin_dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ path('admin_admin_userdetails') }}">User Data</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+<div class="container">
+<div class="table-responsive">
+<table class="table table-bordered">
+{% for c in data %}
+        <tr>
+                <td><strong>Firstname</strong></td><td>{{ c.firstname }}</td>
+	</tr>
+	<tr>
+		<td><strong>Lastname</strong></td><td>{{ c.lastname }}</td>
+        </tr>
+	<tr>    
+	    	<td><strong>Email</strong></td><td>{{ c.email }}</td>
+        </tr>
+	<tr>
+		<td><strong>Gender</strong></td><td>{{ c.gender }}</td>
+	</tr>
+	<tr>
+                <td><strong>Marital Status</strong></td><td>{{ c.martial_status }}</td>
+	</tr>
+	<tr>
+                <td><strong>Mobile No</strong></td><td>{{ c.mobile1 }}</td>
+	</tr>
+	<tr>
+                <td><strong>Country</strong></td><td>{{ c.country_present }}</td>
+	</tr>
+	<tr>
+                <td><strong>state</strong></td><td>{{ c.state_present }}</td>
+	</tr>
+	<tr>
+                <td><strong>City</strong></td><td>{{ c.city_present }}</td>
+	</tr>
+	<tr>
+                <td><strong>Created Date</strong></td><td>{{ c.created | date('Y-m-d h:i:s') }}</td>
+	</tr>
+	<tr>
+                <td><strong>Updated Date</strong></td><td>{{ c.updated | date('Y-m-d h:i:s') }}</td>
+	</tr>
+	<tr>
+                <td><strong>Last Accessed<?strong></td><td>{{ c.last_access | date('Y-m-d h:i:s') }}</td>
+	</tr>
+	<tr>
+                <td><strong>Last Accessed IP</strong></td><td>{{ c.last_access_ip }}</td>
+	</tr>
+	<tr>
+                <td><strong>Status</strong></td><td width="30%">{% if c.status == 0 %} Inactive {% elseif c.status == 1 %} Active {% endif %}</td>
+        </tr>
+        {% endfor %}
+</table>
+</div>
+</div>
+{% endblock %}
+

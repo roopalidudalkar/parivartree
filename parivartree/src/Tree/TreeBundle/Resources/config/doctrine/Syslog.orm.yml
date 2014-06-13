@@ -1,0 +1,22 @@
+Tree\TreeBundle\Entity\Syslog:
+   type: entity
+   table: parivar_syslog
+   id: 
+       id:
+           type: integer
+           generator: { strategy: AUTO }
+           length: '7'
+   fields: 
+       log_type: 
+           type: integer
+       activity_message:
+           type: string
+           length: '50'
+       log_level: 
+           type: integer
+       log_time:
+           type: datetime
+       log_ip: 
+           type: integer
+           nullable: TRUE                  
+

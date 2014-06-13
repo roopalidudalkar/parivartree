@@ -1,0 +1,70 @@
+Tree\TreeBundle\Entity\Account:
+    type: entity
+    table: parivar_account
+    id: 
+        id:
+            type: integer
+            length: '7'
+            generator: { strategy: AUTO }
+    fields: 
+        userid: 
+            type: integer
+            length: '7'
+        userprofileid:
+            type: integer
+            length: '7'
+        firstname:
+            type: string
+            length: '40'
+            nullable: true
+        lastname: 
+            type: string
+            length: '40'
+            nullable: TRUE
+        dob: 
+            type: datetime
+            nullable: TRUE
+        yob: 
+            type: datetime
+            nullable: TRUE
+        gender: 
+            type: integer
+            nullable: TRUE
+            length: '2'
+        martial_status: 
+            type: integer
+            length: '2'
+            nullable: TRUE
+        mobile1:
+            type: string
+            length: '40'
+            nullable: TRUE
+        mobile2: 
+            type: string
+            length: '40'
+            nullable: TRUE
+        country_residence:
+            type: string
+            nullable: TRUE
+        country_present: 
+            type: string
+            nullable: TRUE
+        state_residence:
+            type: string
+            nullable: TRUE
+        state_present:
+            type: string
+            nullable: TRUE
+        city_residence:
+            type: string
+            nullable: TRUE
+        city_present: 
+            type: string
+            nullable: TRUE
+        pin_residence:
+            type: string
+            nullable: TRUE
+        pin_present: 
+            type: string
+            nullable: TRUE
+

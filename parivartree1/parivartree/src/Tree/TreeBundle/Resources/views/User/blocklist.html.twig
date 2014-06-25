@@ -1,0 +1,125 @@
+{% extends '::base_inner.html.twig' %}
+
+{% block header %}
+
+{% block body %}
+<div class="header-top-block">
+
+		<div class="container">
+
+			<div class="col-md-2"><a href="#"><img src="{{ asset('img/logo1.png') }}" ></a></div>
+
+			<div class="col-md-4 search-bar clear-both">
+
+				<form class="navbar-form form-group" method="post" action="search-result.php">
+
+					<input class="form-control" type="text" value="" placeholder="Search People" required="" name="srch">
+
+				</form>
+
+			</div>
+
+			<div class="col-md-2 profile-name">
+
+			<span></span>
+
+			<h4>Profile Name</h4>
+
+			</div>
+
+
+
+          <div class="col-md-2 mess-block">
+
+            <ul>
+
+			  <li class="active"><a href="#"><img src="{{asset ('img/message.png') }}" ><span>16</span></a></li>
+
+			  <li><a href="#"><img src="{{asset ('img/notification.png') }}" ><span>2</span></a></li>
+
+            </ul>
+
+          </div>
+
+		  <div class="col-md-2 menu">
+
+		  	<ul>
+
+				<li><a href="#">Tree View</a></li>
+
+				<li><a href="#">Gallery</a></li>
+
+				<li><a href="#/">Timeline</a></li>
+
+			</ul>
+
+		  </div>
+
+		</div>
+
+		
+
+		</div>
+
+	</div>
+
+
+	
+<div class="container block-list-container innerpage">
+
+	<div class="block-list-left col-md-2">
+		<div class="block-list-cont">
+			<h1>Blocking</h1>
+			<ul>
+				<li>User 1</li>
+				<li>User 1</li>
+				<li>User 1</li>
+				<li>User 1</li>
+				<li>User 1</li>
+				<li>User 1</li>
+				<li>User 1</li>
+				<li>User 1</li>
+				<li>User 1</li>
+				<li>User 1</li>
+			</ul>
+		</div>
+	</div>
+	<div class="block-list-right col-md-10">
+	<div class="page-header">
+<h4>Manage Blocking</h4>
+</div>
+			<div class="block-user-list">
+			<h1>User Block</h1>
+			<p>Once you block someone, that person can no longer see things you post on your timeline, tag you, invite you to events or groups, start a conversation with you, or add you as a friend. Note: Does not include apps, games or groups you both participate in.</p>
+			<div class="row control-group">
+				<div class="col-md-3">User details</div>
+				<div class="col-md-6"><input type="text" palceholder="User List" ></div>
+				<div class="col-md-3"><button class="btn btn-block btn-primary">Block</button></div>
+			</div>
+			</div>
+			<div class="block-user-list">
+			<h1>Invites Block</h1>
+			<p>Once you block someone, that person can no longer see things you post on your timeline, tag you, invite you to events or groups, start a conversation with you, or add you as a friend. Note: Does not include apps, games or groups you both participate in.</p>
+			<div class="row control-group">
+				<div class="col-md-3">User details</div>
+				<div class="col-md-6"><input type="text" palceholder="User List" ></div>
+				<div class="col-md-3"><button class="btn btn-block btn-primary">Block</button></div>
+			</div>
+			</div>
+			<div class="block-user-list">
+			<h1>Block event invites</h1>
+			<p>Once you block someone, that person can no longer see things you post on your timeline, tag you, invite you to events or groups, start a conversation with you, or add you as a friend. Note: Does not include apps, games or groups you both participate in.</p>
+			<div class="row control-group">
+				<div class="col-md-3">User details</div>
+				<div class="col-md-6"><input type="text" palceholder="User List" ></div>
+				<div class="col-md-3"><button class="btn btn-block btn-primary">Block</button></div>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% endblock %}
+
+
+

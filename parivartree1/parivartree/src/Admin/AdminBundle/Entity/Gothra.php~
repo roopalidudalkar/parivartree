@@ -1,0 +1,12 @@
+<?php
+// src/Admin/AdminBundle/Entity/Gothra.php
+
+namespace Admin\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+class Gothra
+{
+}
+
+?>

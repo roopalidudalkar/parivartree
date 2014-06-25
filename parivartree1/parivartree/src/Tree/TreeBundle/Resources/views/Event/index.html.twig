@@ -1,0 +1,356 @@
+{% extends '::base_inner.html.twig' %}
+
+{% block mainbody %}
+<script>
+jQuery(document).ready(function(){
+
+	$.urlParam = function(name){
+		var results = new RegExp('[\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
+		return results[1] || 0;
+	}
+
+
+
+	$('#createevent').click(function(){
+			$('#AddEvent').modal();
+	});
+
+	$('a[class^="eventsLink"]').click(function(){
+		$('#eventdetails').html('<img src="{{ asset('img/loading.gif') }}">');
+		var $eventid = $(this).attr('id');
+		$.ajax({url:'{{ asset('fetchEvents.php') }}', data:{'userid':'{{ app.session.get('uid') }}','eventid':$eventid }, success:function(result) {
+			
+				setTimeout(function(){ $('#eventdetails').html(result); }, 2000);
+				
+			}
+		});
+	});
+	
+	
+	if($.urlParam('hash')!=''){
+		$.ajax({url:'{{ asset('fetchEvents.php') }}', data:{'userid':'{{ app.session.get('uid') }}','eventid':$.urlParam('hash') }, success:function(result) {
+				
+					setTimeout(function(){ $('#eventdetails').html(result); }, 1000);
+					
+				}
+			});
+	}
+	else
+	{
+		$.ajax({url:'{{ asset('fetchEvents.php') }}', data:{'userid':'{{ app.session.get('uid') }}','eventid':$('a[class="eventsLink1"]').attr('id') }, success:function(result) {
+				
+					setTimeout(function(){ $('#eventdetails').html(result); }, 1000);
+					
+				}
+			});
+	}
+});
+</script>
+<div class="container events-block innerpage">
+	<div class="col-md-3 clear-both">
+		<div class="event-left-block">
+		<div class="events-header">My Events</div>
+			{% for event in myevents %} 
+					<div class="event-user">
+						<div class="thumb"></div>
+						<div class="event-user-cont">
+							<h1>{{ event['firstname'] }} {{ event['lastname'] }}</h1>
+							<p><a href="#" class="eventsLink1" id="{{ event['id'] }}">{{ event['eventname'] }}</a> </p>
+							<b>{% if "now"|date('Y') == event['eventdate']|date('Y') %} 
+									{% if "now"|date('d') == event['eventdate']|date('d') %}
+										{{ event['eventdate']|date('h:i a') }}
+									{% else %}
+										{{ event['eventdate']|date('dS M h:i a') }}
+									{% endif %}
+								{% else %} 
+									{{ event['eventdate']|date('dS M  Y h:i a') }} 
+								{% endif %}
+							</b>
+						</div>
+					</div>
+			 	 
+			 {% endfor %} 
+		<div class="events-header">Up Coming Events</div>
+		 	{% for event in events %} 
+		 	{% if "now"|date('Y-m-d') < event['eventdate']|date('Y-m-d') %} 
+					<div class="event-user">
+						<div class="thumb"></div>
+						<div class="event-user-cont">
+							<h1>{{ event['firstname'] }} {{ event['lastname'] }}</h1>
+							<p><a href="#" class="eventsLink" id="{{ event['id'] }}">{{ event['eventname'] }}</a> </p>
+							<b>{% if "now"|date('Y') == event['eventdate']|date('Y') %} 
+									{% if "now"|date('d') == event['eventdate']|date('d') %}
+										{{ event['eventdate']|date('h:i a') }}
+									{% else %}
+										{{ event['eventdate']|date('dS M h:i a') }}
+									{% endif %}
+								{% else %} 
+									{{ event['eventdate']|date('dS M  Y h:i a') }} 
+								{% endif %}
+							</b>
+						</div>
+					</div>
+			 	{% endif %}
+			 {% endfor %} 
+		<div class="events-header">Recent Events</div>
+			{% for event in events %} 
+				{% if "now"|date('Y-m-d') > event['eventdate']|date('Y-m-d') %} 
+					<div class="event-user">
+						<div class="thumb"></div>
+						<div class="event-user-cont">
+							<h1>{{ event['firstname'] }} {{ event['lastname'] }}</h1>
+							<p><a href="#" class="eventsLink" id="{{ event['id'] }}">{{ event['eventname'] }}</a> </p>
+							<b>{% if "now"|date('Y') == event['eventdate']|date('Y') %} 
+									{% if "now"|date('d') == event['eventdate']|date('d') %}
+										{{ event['eventdate']|date('h:i a') }}
+									{% else %}
+										{{ event['eventdate']|date('dS M h:i a') }}
+									{% endif %}
+								{% else %} 
+									{{ event['eventdate']|date('dS M  Y h:i a') }} 
+								{% endif %}
+							</b>
+						</div>
+					</div>
+			 	{% endif %} 
+			{% endfor %} 
+		</div>
+	</div>
+	
+
+	<div class="col-md-6 event-middle-cont">
+		<div class="event-middle-block">
+		
+			<div class="row event-middle-header">
+				<div class="col-md-9"><h4>Create a Event</h4></div>
+				<div class="col-md-3 clear-right"><a href="#" id="createevent"  class="btn btn-primary btn-sm btn-block">CREATE</a></div>
+			</div>
+			<div id="eventdetails"></div>
+		</div>
+	</div>
+	<div class="col-md-3 clear-both">
+		<div class="event-left-block">
+		<div class="events-header">Notification</div>
+		{%for data in notifs %}
+			{% if data['notificationtype'] == 1 %}
+				<div class="event-user">
+					<div class="thumb"></div>
+					<div class="event-user-cont">
+						<p><a href="{{ path('tree_tree_event', {'hash': 123 } )}}">{{ data['entityname'] }} has invited you for an {{ data['event'] }}.</a> </p>
+						<b>{% if "now"|date('Y') == data['created']|date('Y') %} 
+									{% if "now"|date('d') == data['created']|date('d') %}
+										{{ data['created']|date('h:i a') }}
+									{% else %}
+										{{ data['created']|date('dS M h:i a') }}
+									{% endif %}
+								{% else %} 
+									{{ data['created']|date('dS M  Y h:i a') }} 
+								{% endif %}
+						</b>
+					</div>
+				</div>
+			{% elseif data['notificationtype'] == 2 %}
+				<div class="event-user">
+					<div class="thumb"></div>
+					<div class="event-user-cont">
+						<p><a href="{{ path('tree_tree_event', {'hash': 123 } )}}"> {{ data['entityname'] }} has posted {{ data['post'] }} on your wall.</a> </p>
+						<b>{% if "now"|date('Y') == data['created']|date('Y') %} 
+									{% if "now"|date('d') == data['created']|date('d') %}
+										{{ data['created']|date('h:i a') }}
+									{% else %}
+										{{ data['created']|date('dS M h:i a') }}
+									{% endif %}
+								{% else %} 
+									{{ data['created']|date('dS M  Y h:i a') }} 
+								{% endif %}
+						</b>
+					</div>
+				</div>
+			{% elseif data['notificationtype'] == 3 %}
+				<div class="event-user">
+					<div class="thumb"></div>
+					<div class="event-user-cont">
+						<p><a href="{{ path('tree_tree_event', {'hash': 123 } )}}"> {{ data['entityname'] }} was added to your tree by {{ data['addedby'] }}</a> </p>
+						<b>{% if "now"|date('Y') == data['created']|date('Y') %} 
+									{% if "now"|date('d') == data['created']|date('d') %}
+										{{ data['created']|date('h:i a') }}
+									{% else %}
+										{{ data['created']|date('dS M h:i a') }}
+									{% endif %}
+								{% else %} 
+									{{ data['created']|date('dS M  Y h:i a') }} 
+								{% endif %}
+						</b>
+					</div>
+				</div>
+			{% elseif data['notificationtype'] == 4 %}
+				<div class="event-user">
+					<div class="thumb"></div>
+					<div class="event-user-cont">
+						<p><a href="{{ path('tree_tree_event', {'hash': 123 } )}}"> {{ data['entityname'] }} has invited to join the family as {{ data['relationname'] }}</a> </p>
+						<b>{% if "now"|date('Y') == data['created']|date('Y') %} 
+									{% if "now"|date('d') == data['created']|date('d') %}
+										{{ data['created']|date('h:i a') }}
+									{% else %}
+										{{ data['created']|date('dS M h:i a') }}
+									{% endif %}
+								{% else %} 
+									{{ data['created']|date('dS M  Y h:i a') }} 
+								{% endif %}
+						</b>
+					</div>
+				</div>
+			{% elseif data['notificationtype'] == 5 %}
+				<div class="event-user">
+					<div class="thumb"></div>
+					<div class="event-user-cont">
+						<p><a href="{{ path('tree_tree_event', {'hash': 123 } )}}"> {{ data['entityname'] }} has accepted the Invitation to join the event {{ data['event'] }}</a> </p>
+						<b>{% if "now"|date('Y') == data['created']|date('Y') %} 
+									{% if "now"|date('d') == data['created']|date('d') %}
+										{{ data['created']|date('h:i a') }}
+									{% else %}
+										{{ data['created']|date('dS M h:i a') }}
+									{% endif %}
+								{% else %} 
+									{{ data['created']|date('dS M  Y h:i a') }} 
+								{% endif %}
+						</b>
+					</div>
+				</div>
+			{% endif %}												
+		{% endfor %}
+			
+		</div>
+		<div class="event-left-block">
+		<div class="events-header">Acivity Stream</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user unread">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			
+		</div>
+		
+		
+		
+	</div>
+	
+</div>
+
+<div class="footer">
+	<div class="container">
+    	<div class="col-md-8"><p>Â© 2014 Parivartree | About | Privacy Policy | Terms & Conditions | FAQs | Campaigns</p></div>
+        <div class="col-md-4 follow">Follow us</div>
+    	
+    	
+    </div>
+	
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="AddEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-addnode">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalFormLabel">Create Event</h4>
+			</div>
+			<div class="modal-body">
+	
+						<div class="create-event-cont">
+						{{ form_start(form) }}
+							<div class="form-group">
+								{{ form_label(form.event) }}
+								{{ form_widget(form.event) }}
+							</div>
+							<div class="form-group">
+								{{ form_label(form.eventname) }}
+								{{ form_widget(form.eventname) }}
+							</div>
+							<div class="form-group">
+								{{ form_label(form.eventdate) }}
+								{{ form_widget(form.eventdate) }}
+							</div>
+						<div class="addressinfo"><h1>Event Venue:</h1>
+							<div class="form-group">
+								
+								{{ form_widget(form.housenumber) }}
+							</div>
+							<div class="form-group">
+							
+								{{ form_widget(form.streetnumber) }}
+							</div>
+							<div class="form-group">
+								
+								{{ form_widget(form.pincode) }}
+							</div>
+							
+							<div class="form-group">
+								
+								{{ form_widget(form.location) }}
+							</div>
+							<div class="form-group">
+								
+								{{ form_widget(form.city) }}
+							</div>
+							<div class="form-group">
+							
+								{{ form_widget(form.state) }}
+							</div>
+							<div class="form-group">
+							
+								{{ form_widget(form.country) }}
+							</div>
+							<div class="form-group">
+							
+								{{ form_widget(form.address) }}
+							</div>
+						</div>
+							<div class="form-group">
+								{{ form_label(form.eventdescription) }}
+								{{ form_widget(form.eventdescription) }}
+							</div>
+							<div class="form-group">
+								{{ form_widget(form.reach) }}
+								{% for radio in form_widget(form.reach) %}
+									<div class="col-md-4">{{ radio }}</div>
+								{% endfor %}
+							</div>
+							
+							<div class="form-group pull-right">
+							<button type="button" class="btn btn-default">Cancel</button>
+							{{ form_row(form.submit) }}
+							</div>
+						{{ form_end(form) }}	
+						</div>
+			</div>
+		</div>
+	</div>
+</div>  
+
+
+
+{% endblock %}

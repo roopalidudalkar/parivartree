@@ -1,0 +1,160 @@
+.Node{
+    width:113px;
+    background:#EBEBEB;
+    border:1px solid #eee;
+    margin:auto;
+    transition:all 0.5s ease;
+    
+}
+
+.online-active a{
+    background: url("../img/online.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    float: left;
+    height: 22px;
+    width: 22px;
+    z-index:1000;
+}
+
+.online-Inactive a{
+    background: url("../img/online-in.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    float: left;
+    height: 22px;
+    width: 22px;
+    z-index:1000;
+}
+
+
+.add-relation a{
+    background: url("../img/add.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    float: right;
+    height: 22px;
+    width: 24px;
+    z-index:1000;
+	ba
+}
+
+
+
+.profile-img a {
+    background: url("../img/kubulu.jpg") no-repeat scroll -5px -6px / 108% auto rgba(0, 0, 0, 0);
+    display: block;
+  width: 85px;
+  height: 85px;
+     margin: 1em auto 0;
+  -webkit-border-radius: 99em;
+  -moz-border-radius: 99em;
+  border-radius: 99em;
+  border: 5px solid #036fa0;
+  background-size:110%;
+}
+
+.profile-imgfe a {
+    background: url("../img/female.jpg") no-repeat scroll -5px -6px / 108% auto rgba(0, 0, 0, 0);
+    display: block;
+  width: 85px;
+  height: 85px;
+     margin: 1em auto 0;
+  -webkit-border-radius: 99em;
+  -moz-border-radius: 99em;
+  border-radius: 99em;
+  border: 5px solid #dc48dc;
+  background-size:110%;
+}
+.Node:hover{
+  
+}
+
+.Node-title{
+    color: #076e9b;
+    font-size: 13px;
+    padding-top: 3px;
+    text-align: center;
+    width: 100%;
+	white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-left:4px;
+	
+}
+
+.Node-empty{
+	 width:150px;
+}
+
+.Node-loc{
+    width:100%;
+    text-align:center;
+	padding-bottom:10px;
+}
+
+.Node-bottom{
+    background: none repeat scroll 0 0 #e0e0e0;
+    height: 22px;
+    margin-left: -1px;
+    position: absolute;
+    transition: all 0.5s ease 0s;
+    width: 113px;
+}
+.Node-bottom .Node-block{
+    width:20px;
+    height:20px;
+    float:left;
+}
+
+.Node-bottom .photo{
+    background:url('../img/photo.png');
+    background-repeat:no-repeat;
+    background-position:center;
+	background-size:90%;
+	margin-left:2px;
+}
+.Node-bottom .mail{
+    background:url('../img/mail.png');
+    background-repeat:no-repeat;
+    background-position:center;
+	background-size:90%;
+}
+
+.Node-bottom .mailhidden{
+    background:url('../img/mail-hidden.png');
+    background-repeat:no-repeat;
+    background-position:center;
+	background-size:90%;
+}
+
+.Node-bottom .video{
+    background:url('../img/video.png');
+    background-repeat:no-repeat;
+    background-position:center;
+	background-size:90%;
+}
+
+.Node-bottom .invite{
+    text-align: center;
+    width: 51px;
+	background:none;
+	transition:0.5s ease all;
+	padding-top:4px;
+}
+
+.Node-bottom .invite a:hover{
+    text-decoration:none;
+	background:#f77004;
+}
+.Node-bottom .invite a{
+   background: none repeat scroll 0 0 #63a5dd;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 10px;
+    padding: 0 6px;
+}
+
+.treecontainer{
+
+	height:600px;
+	background:url(../img/crossword.png);
+}
+
+
+
+

@@ -1,0 +1,17 @@
+Tree\TreeBundle\Entity\Eventtoinviteesrel:
+    type: entity
+    table: parivar_eventtoinviteesrel
+    id: 
+        id: 
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        eventid:
+            type: integer
+            length: '7'
+        inviteeid:
+            type: integer
+        inviteestatus:
+            type: integer
+            nullable: TRUE
+                                                                                              

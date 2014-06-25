@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+
+{% block js %}
+
+{% endblock %}
+
+{% block body %}
+
+<div class="top-header">
+   		<div class="container">
+        	<div class="col-md-6 success-header">
+            	<a class="navbar-brand sucesslogo" href="#"><img alt="" src="{{ asset ('img/logo.jpg') }}"></a>
+            </div>
+            <div class="col-md-6">
+				
+            </div>
+        </div>
+   </div>
+<div class="container success-block">
+<div class="success">
+				{% block success %}
+					
+					<h1>Thank You for Registering with Parivartree.</h1>
+					<p> Please Check your Email for login Information.</p1>
+				{% endblock %}
+</div>
+</div>
+
+<div class="footer">
+	<div class="container">
+    	<div class="col-md-8"><p>© 2014 Parivartree | About | Privacy Policy | Terms & Conditions | FAQs | Campaigns</p></div>
+        <div class="col-md-4 follow">Follow us</div>
+    	
+    	
+    </div>
+	
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+Tree\TreeBundle\Entity\Eventtoattachmentrel:
+    type: entity
+    table: parivar_eventtoattachmentrel 
+    id:
+        id:
+            type: integer
+            generator: { strategy : AUTO }
+    fields:
+        eventid:
+            type: integer
+            length: '7'      
+        attachementhash:
+            type: string
+            length: 20
+        attachmenttype:
+           type: integer
+           length: '5'
+        attechmentext:
+           type: string
+        created:
+           type: datetime
+        updated:
+           type: datetime
+        status:
+           type: integer 
+

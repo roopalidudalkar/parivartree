@@ -1,0 +1,41 @@
+Tree\TreeBundle\Entity\Notifications:
+    type: entity
+    table: parivar_notification
+    id:
+        id: 
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        userid: 
+            type: integer
+        notificationtype: 
+            type: integer
+        entityname: 
+            type: string
+            nullable: TRUE
+            length: 50
+        event:
+            type: string
+            nullable: TRUE
+        post:
+           type: string 
+           nullable: TRUE
+        relationname: 
+           type: string
+           nullable: TRUE
+        addedby:
+           type: string
+           nullable: TRUE
+        entityid:
+           type: integer
+           nullable: TRUE
+        readstatus:
+          type: integer
+        created:
+          type: datetime          
+
+
+
+
+
+           

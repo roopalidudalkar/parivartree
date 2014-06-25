@@ -1,0 +1,138 @@
+{% extends "AdminAdminBundle:Admin:headerw.html.twig" %}
+
+{% block body %}
+
+<script type="text/javascript">
+
+ function deletefunc(id,name){
+	var con = confirm('Are you sure to delete '+name+' ? The record once deleted cannot be retrived back');
+	if(con){
+		var url = "{{ path('admin_admin_deletereligion',{'id': 'ID'}) }}";
+		var urlset = url.replace('ID', id);
+			window.open(urlset,"_self");
+		return true;
+	}else{
+		return false;
+	}
+ }
+ 
+
+</script>
+
+<script>
+jQuery(document).ready(function(){
+
+$('a[class^="addcommunity"]').click(function(){
+	var $id = $(this).attr('id');
+	$('#form_id').val($id);
+	$('#addcommunity').modal();
+});
+
+
+});
+</script>
+
+<div class="container">
+<div class="page-header">
+	<h4>Religion </h4>
+</div>
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Add Religion</button>
+<div class="table-responsive user-details">
+<table class="table table-bordered">
+	<thead>
+	<tr>
+		<th>Religion</th>
+		<th>Add Community</th>
+		<th>Update</th>
+	</tr>
+	</thead>
+	<tbody>
+	{% for d in data %}
+	<tr>
+		<th><a href="{{ path('admin_admin_viewcommunity',{'id': d.id}) }}" id="{{ d.id }}">{{ d.parameter }}</a></th>
+		<th><a href="#" data-toggle="modal" onclick="return addcommunity({{ d.id }});" id="{{ d.id }}" class="addcommunity">Add community</a></th>
+        <th><a href="{{ path('admin_admin_editreligion',{'id':d.id }) }}" id="{{ d.id }}" class="addcommunity">Edit</a>|<a href="#" onclick="deletefunc('{{ d.id }}','{{ d.parameter }}')">Delete</a></th>
+	</tr>
+	{% endfor %}
+	</tbody>
+</table>
+
+</div>
+</div>
+
+<div class="container">
+<div>Now showing : {{ from }} to {{ to }} records</div>
+<div>{% set page_count = -count//10 %}
+<ul class="pagination">
+
+  <li><a href="{{ path('admin_admin_religion',{'offset':1}) }}">&laquo;</a></li>
+{% for i in 1..-(page_count) %}
+
+  <li><a href="{{ path('admin_admin_religion',{'offset':i}) }}">{{ i }}</a></li>
+
+{% endfor %}
+
+  <li><a href="{{ path('admin_admin_religion',{'offset':-(page_count)}) }}">&raquo;</a></li>
+</ul>
+</div>
+</div>
+
+<div class="" >
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add Religion</h4>
+      </div>
+      <div class="modal-body">
+        {{ form_start(form) }}
+        <div class="col-md-3">
+                {{ form_label(form.parameter)}}
+        </div>
+        <div class="col-md-6 add-religion-input">
+                {{ form_widget(form.parameter) }}
+        </div>
+	<div class="col-md-3">
+                {{ form_row(form.submit)}}
+        </div>
+{{ form_end(form) }}
+
+      </div>
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+<div class="modal fade" id="addcommunity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel1">Add Community</h4>
+      </div>
+      <div class="modal-body">
+        {{ form_start(communityform) }}
+        <div class="col-md-3">
+                {{ form_label(communityform.parameter)}}
+        </div>
+        <div class="col-md-6 add-religion-input">
+                {{ form_widget(communityform.parameter) }}
+        </div>
+	<div class="col-md-3">
+                {{ form_row(communityform.submit)}}
+        </div>
+{{ form_end(communityform) }}
+
+      </div>
+      
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

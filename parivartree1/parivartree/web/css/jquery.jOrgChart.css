@@ -1,0 +1,66 @@
+/* Basic styling */
+/* Draw the lines */
+
+.orgChart{
+	width:100%;
+}
+.jOrgChart .line {
+  height                : 28px;
+  width                 : 2px;
+}
+
+.jOrgChart .horizontal {
+	width : 20px;
+	height: 2px;
+	background-color:#808080;
+	margin-top: 62px;
+
+}
+
+.jOrgChart .vertical {
+	width : 2px;
+	height: 70px;
+	background-color:#808080;
+	margin:auto;
+
+}
+
+.jOrgChart .down {
+  background-color 		: #808080;	
+  margin 				: 0px auto;
+}
+
+.jOrgChart .top {
+  border-top          : 2px solid #808080;
+}
+
+.jOrgChart .left {
+  border-right          : 2px solid #808080;
+}
+
+.jOrgChart .right {
+  border-left           : 2px solid #808080;
+}
+
+/* node cell */
+.jOrgChart td {
+  text-align            : center;
+  vertical-align        : top;
+  padding               : 0;
+}
+
+/* The node */
+.jOrgChart .node {
+
+}
+ 
+/* jQuery drag 'n drop */
+
+.drag-active {
+  border-style			: dotted !important;
+}
+
+.drop-hover {
+  border-style			: solid !important;
+  border-color 			: #E05E00 !important;
+}

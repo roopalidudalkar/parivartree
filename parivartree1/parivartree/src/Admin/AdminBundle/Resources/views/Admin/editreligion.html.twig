@@ -1,0 +1,21 @@
+{% extends "AdminAdminBundle:Admin:headerw.html.twig" %}
+
+{% block body %}
+
+<div class="container">
+<div class="add-religion">
+{{ form_start(form) }}
+	<div class="col-md-3">
+		{{ form_label(form.parameter)}}
+	</div>
+	<div class="col-md-6 add-religion-input">
+		{{ form_widget(form.parameter) }}
+	</div>
+	<div class="col-md-3">
+		{{ form_row(form.submit)}}
+	</div>
+{{ form_end(form) }}
+</div>
+</div>
+
+{% endblock %}

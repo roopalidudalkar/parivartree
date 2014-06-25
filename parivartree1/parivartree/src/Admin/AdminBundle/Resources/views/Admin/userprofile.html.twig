@@ -1,0 +1,98 @@
+{% extends "AdminAdminBundle:Admin:headerw.html.twig" %}
+
+{% block body %}
+
+
+
+<div class="container">
+<div class="page-header">
+	<h4>User Details</h4>
+</div>
+
+<div class="row admin-header-btn">
+	<a class="btn btn-primary pull-right" href="{{ path('admin_admin_lastaccessed',{'id': id }) }}">Last Accessed</a>
+	<a class="btn btn-primary pull-right" href="{{ path('admin_admin_viewtree', {'nodeid': id }) }}">View Tree</a>
+</div>
+
+<div class="table-responsive user-details user-detail-block">
+<table class="table table-bordered">
+{% for c in data %}
+    <tr>
+      <th><strong>Firstname</strong></th><td>{{ c.firstname }}</td>
+	</tr>
+	<tr>
+		<th><strong>Lastname</strong></th><td>{{ c.lastname }}</td>
+        </tr>
+	<tr>    
+	    	<th><strong>Email</strong></th><td>{{ c.email }}</td>
+        </tr>
+	<tr>
+		<th><strong>Gender</strong></th><td>{{ c.gender }}</td>
+	</tr>
+	<tr>
+		<th><strong>Dob</strong></th><td>{{ c.dob }}</td>
+	</tr>
+	<tr>
+		<th><strong>City</strong></th><td>{{ c.city }}</td>
+	</tr>
+	<tr>
+                <th><strong>Locality</strong></th><td>{{ c.locality }}</td>
+	</tr>
+	<tr>
+                <th><strong>State</strong></th><td>{{ c.state }}</td>
+	</tr>
+	<tr>
+                <th><strong>Country</strong></th><td>{{ c.country }}</td>
+        </tr>
+	<tr>
+                <th><strong>Pin code</strong></th><td>{{ c.pin }}</td>
+        </tr>
+	<tr>
+                <th><strong>Hometown</strong></th><td>{{ c.hometown }}</td>
+	</tr>
+	<tr>
+                <th><strong>Mobile Number</strong></th><td>{{ c.mobile }}</td>
+        </tr>
+	<tr>
+                <th><strong>Marital Status</strong></th><td>{{ c.marital_status }}</td>
+	</tr>
+	<tr>
+                <th><strong>Wedding Anniversary</strong></th><td>{{ c.wedding_date }}</td>
+        </tr>
+
+	<tr>
+                <th><strong>Gothra</strong></th><td>{{ c.gothra }}</td>
+	</tr>
+	<tr>
+                <th><strong>Religion</strong></th><td>{{ c.religion }}</td>
+        </tr>
+	<tr>
+                <th><strong>Community</strong></th><td>{{ c.community }}</td>
+        </tr>
+	<tr>
+		<th><strong>Profession</strong></th><td>{{ c.profession }}</td>
+	</tr>
+
+	<tr>
+                <th><strong>Created Date</strong></th><td>{{ c.created | date('Y-m-d h:i:s') }}</td>
+	</tr>
+	<tr>
+                <th><strong>Updated Date</strong></th><td>{{ c.updated | date('Y-m-d h:i:s') }}</td>
+	</tr>
+	<tr>
+                <th><strong>Last Accessed<?strong></th><td>{{ c.last_access | date('Y-m-d h:i:s') }}</td>
+	</tr>
+	<tr>
+                <th><strong>Last Accessed IP</strong></th><td>{{ c.last_access_ip }}</td>
+	</tr>
+	<tr>
+                <th><strong>Status</strong></td><th>{% if c.status == 0 %} Inactive {% elseif c.status == 1 %} Active {% endif %}</td>
+        </tr>
+        {% endfor %}
+</table>
+</div>
+</div>
+
+
+{% endblock %}
+

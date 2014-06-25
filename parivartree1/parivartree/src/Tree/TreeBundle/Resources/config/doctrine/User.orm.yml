@@ -1,0 +1,59 @@
+Tree\TreeBundle\Entity\User:
+    type: entity
+    table: parivar_user
+    id: 
+        id: 
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        email: 
+            type: string
+            length: '70'
+        password: 
+            type: string
+            length: '100'
+            nullable: TRUE
+        userhash: 
+            type: string
+            length: '100'
+            nullable: TRUE
+        sessionid: 
+            type: integer
+            length: '7'
+            nullable: TRUE
+        sessionhash:
+            type: string
+            length: '40'
+            nullable: TRUE
+        mobilecode:
+            type: integer
+            length: 7
+            nullable: TRUE
+        created: 
+            type: datetime
+            nullable: TRUE
+        updated: 
+            type: datetime
+            nullable: TRUE
+        last_access:
+            type: datetime
+            nullable: TRUE
+        last_access_ip:
+            type: string
+            length: '15'
+            nullable: TRUE
+        status: 
+            type: integer
+            nullable: TRUE           
+        login_status:
+            type: integer
+            nullable: TRUE          
+        logincount:
+            type: integer
+            nullable: TRUE
+        violationrule:
+            type: text
+            nullable: TRUE
+        authmechanism:
+            type: string
+            nullable: TREU           

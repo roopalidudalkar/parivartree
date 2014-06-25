@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Welcome! to ParivarTree {% endblock %}</title>
+            
+        {% block stylesheets %}
+		<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+		<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
+		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% endblock %}
+        <link rel="stylesheet" href="{{ asset('css/Node.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('css/jquery.jOrgChart.css') }}"/>
+		<link href="{{ asset('css/prettify.css') }}" type="text/css" rel="stylesheet" />
+		<link type="text/css" rel="stylesheet" media="all" href="{{ asset('css/chat.css') }}" />
+		<link type="text/css" rel="stylesheet" media="all" href="{{ asset('css/screen.css') }}" />
+		<!--[if lte IE 7]>
+		<link type="text/css" rel="stylesheet" media="all" href="{{ asset('css/screen_ie.css') }}" />
+		<![endif]-->
+
+		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="{{ asset('js/bootstrap.js') }}"></script>
+
+
+
+		<!-- jQuery includes -->
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+		<script src="{{ asset('js/jqueryjOrgChart.js') }}"></script>
+		<script src="{{ asset('js/bootstrap.js') }}"></script>
+		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('js/jquery.cookie.js') }}"></script>
+		<script>
+				jQuery(document).ready(function() {
+					$("#org").jOrgChart({
+					chartElement : '#chart',
+					dragAndDrop  : false
+				});	
+        
+				$('#chart').hover(function() {
+					$(this).css('cursor','pointer');
+					}, function() {
+					$(this).css('cursor','auto');
+				});
+	
+				$('div.Node').hover(
+				function() { 
+					var $class = $(this).attr('class');
+					$(this).parent().find('.Node-bottom').show();
+				
+				},
+				function() { 
+					var $class = $(this).attr('class');
+					$(this).parent().find(".Node-bottom").hide();
+				
+				}
+	
+			);
+	
+			$('.add-relation').click(function(ev) {
+				ev.preventDefault(); // preventDefault should suffice, no return false
+    
+			var $parentobj = $(this).parent();
+			var $opt = $($parentobj).find(".Node-title").attr('id');
+			var $genderid = $($parentobj).find("div[class^='profile-img']").attr('id');
+			var $host = window.location.host;
+
+			$('#myModal').modal();
+			
+				$('div[id^="modalpop"]').click(function(ev) {
+					ev.preventDefault(); // preventDefault should suffice, no return false
+					$('#myModal').modal('hide');
+					
+					var $relationid = $(this).attr('id');
+					var $ids = $relationid.split('-');
+					$('#form_nodeid').val($opt);
+					if($ids[1]==3 && $genderid == 2)
+					{
+							$ids[1] = 8;
+					}
+					$('#form_relationid').val($ids[1]);	
+					var $modalLabel = '';
+					switch ($ids[1]){
+						case '1' : $modalLabel = 'Father';
+								  break;
+						case '2' : $modalLabel = 'Mother';
+								  break;
+						case '3' : $modalLabel = 'Wife';
+								  break;
+						case '4' : $modalLabel = 'Brother';
+								  break;
+						case '5' : $modalLabel = 'Sister';
+								  break;
+						case '6' : $modalLabel = 'Son';
+								  break;
+						case '7' : $modalLabel = 'Daughter';
+								  break;
+						case '8' : $modalLabel = 'Husband';
+								  break;
+					
+					}
+					$('#myModalFormLabel').html('Creating '+$modalLabel);
+					$('#AddNode').modal();
+				});
+			});
+			
+			$('#notification-dropdown').click(function(){
+				$.ajax({url:'{{ asset('hide-notification.php') }}', data:{'type':'notification','userid': '{{ app.session.get('uid') }}' }, success:function(result){
+					
+					}	
+				});
+				
+			});
+			
+			$('#message-dropdown').click(function(){
+				
+				$.ajax({url:'{{ asset('hide-notification.php') }}', data:{'type':'message','userid': '{{ app.session.get('uid') }}' }, success:function(result){
+					
+					}	
+				});
+				
+			});
+			
+			$("#chart").draggable();
+		});
+		</script>
+</head>
+    
+<body>
+
+
+
+
+{% block header %}
+
+	{% set username = app.session.get('name') %}	
+<div class="header-top-block">
+		<div class="container clear-both">
+			<div class="col-md-2"><a href="#"><img src="{{ asset('img/logo1.png') }}" ></a></div>
+			<div class="col-md-4 search-bar clear-both">
+				<form class="navbar-form form-group" method="post" action="search-result.php">
+					<input class="form-control" type="text" value="" placeholder="Search People" required="" name="srch">
+				</form>
+			</div>
+			<div class="col-md-2 profile-name">
+				<span></span>
+				<button type="button" class="btn btn-link dropdown-toggle profile-username" data-toggle="dropdown">{{ username }}<b class="caret"></b></button>
+					<ul class="dropdown-menu">
+						<li><a href="#">Settings</a><li>
+						<li><a role="menuitem" tabindex="-1" href="{{ path('tree_tree_rollback') }}">Logout</a></li>
+					</ul>
+			</div>
+	        <div class="col-md-2 mess-block">
+				<ul>
+					<li class="active"><a href="#" class="dropdown-toggle" data-toggle="dropdown" id="message-dropdown"><img src="{{asset ('img/message.png') }}" >{% if mcount > 0 %}<span>{{ mcount }}</span>{% endif %} </a>
+						<ul class="dropdown-menu message-dropdown">
+							<div class="message-header">Inbox</div>
+							<div class="notifications">
+								{% if mcount > 0 %}
+									{% for message in messages%}
+										<li class="new-item">
+											<div class="message-dropdown-block">
+												<div class="thumbnail">
+														
+												</div>
+												<div class="message-content">
+													<h1>{{ message['firstname'] }} {{ message['lastname'] }}</h1>
+													<p>{{ message['message'] }}</p>
+													<b>{% if "now"|date('Y') == message['sent']|date('Y') %} 
+															{% if "now"|date('d') == message['sent']|date('d') %}
+																{{ message['sent']|date('h:i a') }}
+															{% else %}
+																{{ message['sent']|date('dS M h:i a') }}
+															{% endif %}
+													   {% else %} 
+															{{ message['sent']|date('dS M  Y h:i a') }} 
+														{% endif %}
+													</b>
+												</div>
+											</div>
+										</li>
+									{% endfor %}
+								{% else %}
+										<li class="new-item">
+											<div class="message-dropdown-block">
+												No New Messages
+											</div>
+										</li>
+								{% endif%}
+							</div>
+							
+						</ul>
+					</li>
+					<li><a href="#" class="dropdown-toggle" id="notification-dropdown" data-toggle="dropdown"><img src="{{asset ('img/notification.png') }}" >{% if ncount > 0 %}<span>{{ ncount }}</span>{% endif %}</a> 
+						<ul class="dropdown-menu message-dropdown notification">
+							<div class="message-header">Notifications  <b class="pull-right"><a href="{{ path('tree_tree_events') }}">view all</a></b></div>
+							<div class="notifications">
+								{% if ncount > 0 %}
+									{%for data in notifs %}
+										<li class="new-item">
+											<div class="message-dropdown-block">
+												<div class="message-content-notification">
+													{% if data['notificationtype'] == 1 %}
+														<p><a href="{{ path('tree_tree_event', {'hash': 123 } )}}">{{ data['entityname'] }} has invited you for an {{ data['event'] }}.</a> </p>
+													{% elseif data['notificationtype'] == 2 %}
+														<p><a href="{{ path('tree_tree_event', {'hash': 123 } )}}"> {{ data['entityname'] }} has posted {{ data['post'] }} on your wall.</a> </p>
+													{% elseif data['notificationtype'] == 3 %}
+														<p><a href="{{ path('tree_tree_event', {'hash': 123 } )}}"> {{ data['entityname'] }} was added to your tree by {{ data['addedby'] }}</a> </p>
+													{% elseif data['notificationtype'] == 4 %}
+														<p><a href="{{ path('tree_tree_event', {'hash': 123 } )}}"> {{ data['entityname'] }} has invited to join the family as {{ data['relationname'] }}</a> </p>
+													{% elseif data['notificationtype'] == 5 %}
+														<p><a href="{{ path('tree_tree_event', {'hash': 123 } )}}"> {{ data['entityname'] }} has accepted the Invitation to join the event {{ data['event'] }}</a> </p>
+													{% endif %}
+												</div>
+											</div>
+										</li>
+									{% endfor %}
+								{% else %}
+									<li class="new-item">
+										<div class="message-dropdown-block">
+											<div class="message-content">
+												<p> You do not have any New notifications </p>
+											</div>
+										</div>
+									</li>
+								{% endif%}
+							</div>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-2 menu">
+				<ul>
+					<li><a href="{{ path('tree_tree_mytree') }}">Tree View</a></li>
+					<li><a href="#">Gallery</a></li>
+					<li><a href="#/">Timeline</a></li>
+					<li><a href="{{ path('tree_tree_events') }}">Events</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>	
+
+{% endblock %}
+
+{% block mainbody %}
+
+	
+{% endblock %}
+<script type="text/javascript" src="{{ asset('js/chat.js') }}"></script>
+</body>
+</html>

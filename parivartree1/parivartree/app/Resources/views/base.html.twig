@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Welcome! to ParivarTree {% endblock %}</title>
+            
+        {% block stylesheets %}
+		<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+		<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
+		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% endblock %}
+
+        {% block js %}
+		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="{{ asset('js/bootstrap.js') }}"></script>
+		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+		<!-- jQuery includes -->
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+        {% endblock %}
+    </head>
+<body>
+        {% block body %}
+		  <div class="top-header">
+		  <div class="error-block">
+		  	
+			{% for flashMessage in app.session.flashbag.get('error') %}
+
+					<div class="alert alert-danger"> <div class="container">{{ flashMessage }}</div></div>
+						
+					{% endfor %}
+
+					{% for flashMessage in app.session.flashbag.get('success') %}
+
+					<div class="alert alert-success"> <div class="container">{{ flashMessage }}</div></div>
+						
+					{% endfor %}
+					
+					{% for flashMessage in app.session.flashbag.get('message') %}
+
+					<div class="alert alert-success"> <div class="container">{{ flashMessage }}</div></div>
+						
+			{% endfor %}
+	
+		  </div>
+           <div class="container">
+            <div class="col-md-6 clear-left">
+                <a class="navbar-brand" href="#"><img alt="" src="{{ asset('img/logo.jpg') }}"></a>
+            </div>
+             <div class="col-md-6 login-block">
+			{% block login %}
+				   
+					{{ form_errors(loginform) }}
+					{{ form_errors(loginform.email) }}
+              {{ form_start(loginform) }}
+            	<div class="col-md-5">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">User Name or Email </label>
+                       {{ form_widget(loginform.email) }}
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                      {{ form_widget(loginform.rememerme) }}
+                      
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="form-group">
+                        <label for="exampleInputEmail1">Password</label>
+                       {{ form_widget(loginform.password) }}
+                    </div>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <div class="col-md-2">
+                	  {{ form_row(loginform.submit) }}
+                </div>
+            {{ form_end(loginform) }}
+             {% endblock %}
+            </div>
+        </div>
+   </div>
+   
+   {% block flash %}
+
+					
+	{% endblock %}
+ <div class="jumbotron">
+         <div class="container">
+                <div class="col-md-5 signup-left-block">
+                        <h1>Sign Up</h1>
+                        <h2>Its free and always will be</h2>
+                            <div class="row form-group signup-block-btn">
+								 <div class="col-md-6">
+									 
+                                    <button class="btn btn-primary  btn-block" type="button">Sign up with Facebook</button>
+								</div>
+								<div class="col-md-6">
+                                    <button class="btn btn-danger  btn-block" type="button">Sign up with Google+</button>
+                                </div>
+                            </div>
+                            <div class="or"><span>OR</span></div>
+                   	{% block register %}
+							{{ form_errors(form) }}
+							{{ form_errors(form.firstname) }}
+							{{ form_errors(form.lastname) }}
+							{{ form_errors(form.email) }}
+
+							{{ form_errors(form.gender) }}
+							{{ form_errors(form.mobile) }}
+                          {{ form_start(form) }}
+               
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                   {{ form_widget(form.firstname) }}
+                                   
+                                </div>
+                                <div class="col-md-6">
+                                {{ form_widget(form.lastname) }}
+                                </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="form-group">
+                                    {{ form_widget(form.email) }}
+                                    </div>
+                                   
+                       
+                                    <div class="">
+                                   {{ form_widget(form.mobile) }}
+                                    </div>
+                                    
+                                </div>
+                                <div class="row"></div>
+                                <div class="row">
+                                <div class="control-group">
+									<div class="controls gender">
+                               
+                                   {% for gender in form.gender %}
+											{{ form_widget(gender) }}
+											<span>{{ form_label(gender) }}</span>
+									{% endfor %}
+									</div>
+								</div>
+                                
+                                
+								</div>
+      
+                                <div class="row form-group">
+                                <p>By clicking Sign Up, you agree to our Terms and that you have read our Data Use Policy, including our Cookie Use.</p>
+                                
+                                </div>
+                                <div class="row form-group">
+                                    {{ form_row(form.submit) }}
+                                </div>
+                                {{ form_end(form) }}
+                    {% endblock %}
+				</div>
+              
+             <div class="col-md-7">
+                	<div class="banner-right">
+                    	<h1>Family  like branches on a tree, We all grow in different directions yet our roots remain as one</h1>
+						<div class="banner-block">
+                        	<div class="col-md-3">
+								<div class="box">
+                            		<span class="bk1"></span>
+								</div>
+                            	<p>Join</p>
+                            </div>
+                            <div class="col-md-3">
+                            	<div class="box">
+                            		<span class="bk2"></span>
+								</div>
+                            	<p>Invite</p>
+                            </div>
+                            <div class="col-md-3">
+                            	<div class="box">
+                            		<span class="bk3"></span>
+								</div>
+                            	<p>Share</p>
+                            </div>
+                            <div class="col-md-3">
+                            	<div class="box">
+                            		<span class="bk4"></span>
+								</div>
+                            	<p>Smile</p>
+                            </div>
+                        
+                        </div>
+						<div class="need-help">Need help? Talk to one of our family history consultants: 1-800-958-9095 24-HOURS </div>
+                    	<div class="available-block">
+							<h3>Also Available on </h3>
+							<div class="col-md-4"><a href="#"><img src="{{ asset('img/apple.png') }}"></a></div>
+							<div class="col-md-4"><a href="#"><img src="{{ asset('img/googleplay.png') }}"></a></div>
+							<div class="col-md-4"><a href="#"><img src="{{ asset('img/windows.png') }}"></a></div>
+						</div>
+                    </div>	
+                
+                </div>
+            </div>
+</div>
+<div class="footer">
+	<div class="container">
+    	<div class="col-md-8"><p>© 2014 Parivartree | About | Privacy Policy | Terms & Conditions | FAQs | Campaigns</p></div>
+        <div class="col-md-4 follow">Follow us</div>
+    	
+    	
+    </div>
+	
+</div>
+			
+        {% endblock %}
+        
+        
+
+    </body>
+</html>

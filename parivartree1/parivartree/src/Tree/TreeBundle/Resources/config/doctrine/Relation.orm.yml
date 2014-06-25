@@ -1,0 +1,11 @@
+Tree\TreeBundle\Entity\Relation:
+    type: entity
+    table: parivar_relation
+    id:
+        id: 
+             type: integer
+             generator: { strategy: AUTO }
+    fields:
+        relation:
+             type: string
+             length: '20'

@@ -1,0 +1,49 @@
+Admin\AdminBundle\Entity\Admin:
+    type: entity
+    table: parivar_administration
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        firstname: 
+            type: string
+            length: '15'
+        lastname:
+            type: string
+            length: '15'
+        email:
+            type: string
+            length: '60'
+        password:
+            type: string
+            length: '60'
+        profile_id:
+            type: integer
+            length: '3'
+        userhash:
+            type: string
+            length: '60'
+            nullable: TRUE
+        sessionid:
+            type: integer
+            length: '7'
+            nullable: TRUE
+        sessionhash:
+            type: string
+            length: '60'
+            nullable: TRUE
+        created:
+            type: datetime
+        updated:
+            type: datetime
+        last_access:
+            type: datetime
+            nullable: TRUE
+        last_access_ip:
+            type: integer
+            length: '7'
+            nullabe: TRUE
+        status:
+            type: integer
+       

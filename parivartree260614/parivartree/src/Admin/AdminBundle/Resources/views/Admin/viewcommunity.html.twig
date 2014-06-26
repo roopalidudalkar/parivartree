@@ -1,0 +1,31 @@
+{% extends "AdminAdminBundle:Admin:headerw.html.twig" %}
+
+{% block body %}
+
+	<div class="container">
+<div class="page-header">
+        <h4>Community Details</h4>
+</div>
+<div class="table-responsive user-details">
+
+<table class="table table-bordered">
+        <thead>
+        <tr>
+                <th>Community</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for d in data %}
+
+        <tr>
+		<th>{{ d.parameter }}</th>
+	 </tr>
+	
+
+        {% endfor %}
+	</tbody>
+</table>
+</div>
+</div>
+
+{% endblock %}

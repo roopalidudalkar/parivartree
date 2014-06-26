@@ -1,0 +1,14 @@
+Admin\AdminBundle\Entity\Gothra:
+    type: entity
+    table: parivar_gothra
+    id: 
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        parameter:
+            type: string
+            length: '60'
+        status:
+            type: integer
+            length: '3'

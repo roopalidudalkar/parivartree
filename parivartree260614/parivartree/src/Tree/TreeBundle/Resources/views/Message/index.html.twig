@@ -1,0 +1,228 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<div class="header-top-block">
+	<div class="container">
+		<div class="col-md-2"><a href="#"><img src="{{ asset('img/logo1.png') }}" ></a></div>
+		<div class="col-md-4 search-bar clear-both">
+			<form class="navbar-form form-group" method="post" action="search-result.php">
+				<input class="form-control" type="text" value="" placeholder="Search People" required="" name="srch">
+			</form>
+		</div>
+		<div class="col-md-2 profile-name">
+			<span></span><h4>Profile Name</h4>
+		</div>
+		<div class="col-md-2 mess-block">
+			<ul>
+				<li class="active"><a href="#"><img src="{{asset ('img/message.png') }}" ><span>16</span></a></li>
+				<li><a href="#"><img src="{{asset ('img/notification.png') }}" ><span>2</span></a></li>
+			</ul>
+		</div>
+		<div class="col-md-2 menu">
+			<ul>
+				<li><a href="#">Tree View</a></li>
+				<li><a href="#">Gallery</a></li>
+				<li><a href="#/">Timeline</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="container events-block innerpage">
+	<div class="col-md-3 clear-both">
+		<div class="event-left-block">
+		<div class="events-header">Events</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user unread">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user unread">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="col-md-6 event-middle-cont">
+		<div class="event-middle-block">
+			<div class="row event-middle-header">
+				<div class="col-md-9"><h4>Create New Message</h4></div>
+				<div class="col-md-3 clear-right"><button type="button" class="btn btn-primary btn-sm btn-block">CREATE</button></div>
+			</div>
+			<div class="row message-container-block">
+				<div class="message-content-block">
+					<div class="message-thumb"></div>
+					<div class="message-content">Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </div>
+				</div>
+				<div class="message-content-block">
+					<div class="message-thumb"></div>
+					<div class="message-content">Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </div>
+				</div>
+				<div class="message-content-block">
+					<div class="message-thumb"></div>
+					<div class="message-content">Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </div>
+				</div>
+				<div class="message-content-block">
+					<div class="message-thumb"></div>
+					<div class="message-content">Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </div>
+				</div>
+				<div class="message-content-block">
+					<div class="message-thumb"></div>
+					<div class="message-content">Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </div>
+				</div>
+				<div class="message-content-block">
+					<div class="message-thumb"></div>
+					<div class="message-content">Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </div>
+				</div>
+				<div class="message-content-block">
+					<div class="message-thumb"></div>
+					<div class="message-content">Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </div>
+				</div>
+				<div class="message-content-block unread">
+					<div class="message-thumb"></div>
+					<div class="message-content">Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </div>
+				</div>
+				
+				
+			</div>
+			<div class="send-message"><textarea id="textarea" name="textarea" placeholder="Message here.."> </textarea></div>
+			<button type="button" class="btn btn-primary pull-right">SEND</button>
+			
+		</div>
+	</div>
+	<div class="col-md-3 clear-both">
+		<div class="event-left-block">
+		<div class="events-header">Notification</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user unread">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			
+		</div>
+		<div class="event-left-block">
+		<div class="events-header">Notification</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user unread">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			
+		</div>
+		
+		
+		
+	</div>
+	
+</div>
+
+<div class="footer">
+	<div class="container">
+    	<div class="col-md-8"><p>Â© 2014 Parivartree | About | Privacy Policy | Terms & Conditions | FAQs | Campaigns</p></div>
+        <div class="col-md-4 follow">Follow us</div>
+    	
+    	
+    </div>
+	
+</div>
+
+
+
+
+
+{% endblock %}

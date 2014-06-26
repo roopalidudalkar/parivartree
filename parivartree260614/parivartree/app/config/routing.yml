@@ -1,0 +1,8 @@
+admin_admin:
+    resource: "@AdminAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+tree_tree:
+    resource: "@TreeTreeBundle/Resources/config/routing.yml"
+    prefix:   /
+

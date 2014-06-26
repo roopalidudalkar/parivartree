@@ -1,0 +1,61 @@
+<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+                <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+                <link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
+                <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+				  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+				  <script type="text/javascript"> $(document).ready(function () { $('.dropdown-toggle').dropdown(); }); </script>
+                       
+                        <script src="{{ asset('js/bootstrap.min.js') }}"></script> <script src="{{ asset('js/bootstrap.js') }}"></script>
+{% block stylesheets %}
+					
+                
+        {% endblock %}
+
+              
+                     
+
+
+
+<div class="header-top-block">
+                <div class="container">
+                        <div class="col-md-2"><a href="#"><img src="{{ asset('img/logo1.png') }}" ></a></div>
+                        
+
+                        <div class="col-md-10 clear-both admin-menu">
+                <div class="navbar" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+         </div>
+          <div class="navbar-collapse collapse clear-both">
+            <ul class="nav navbar-nav navbar-right notification">
+              <li><a href="{{ path('admin_admin_dashboard') }}">Dashboard</a></li>
+              <li><a href="{{ path('admin_admin_userdetails') }}">Users</a></li>
+			 	
+				
+				
+					<li class="dropdown master" > <a href="#" class="dropdown-toggle" data-toggle="dropdown">Master<b class="caret"></b></a>
+					  <ul class="dropdown-menu">
+						  <li><a href="{{ path('admin_admin_religion') }}">Religion</a></li>
+						  <li><a href="{{ path('admin_admin_community') }}">Community</a></li>
+						  <li><a href="{{ path('admin_admin_gothra') }}">Gothra</a></li>
+						  <li><a href="{{ path('admin_admin_country') }}">Country</a></li>
+
+					  </ul>
+       			 </li>	
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div>
+</div>
+</div>
+
+</div>
+{% block body %}
+
+{% endblock %}

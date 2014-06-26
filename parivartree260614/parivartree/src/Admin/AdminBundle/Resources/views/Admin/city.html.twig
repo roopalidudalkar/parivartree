@@ -1,0 +1,59 @@
+{% extends "AdminAdminBundle:Admin:headerw.html.twig" %}
+
+
+{% block body %}
+
+<script type="text/javascript">
+
+ function deletefunc(id, community){
+        var con = confirm('Are you sure to delete '+community+' ? The record once deleted cannot be retrived back');
+        if(con){
+                var url = "{{ path('admin_admin_deletecommunity',{'id': "ID"}) }}";
+                var urlset = url.replace('ID', id);
+                        window.open(urlset,"_self");
+                return true;
+        }else{
+                return false;
+        }
+ }
+</script>
+
+<div class="container">
+<div class="page-header">
+        <h4>City Details</h4>
+</div>
+<div class="row admin-header-btn">
+        <a class="btn btn-primary pull-right" href="#">Add City</a>
+</div>
+
+<div class="table-responsive user-details">
+
+<table class="table table-bordered">
+        <thead>
+        <tr>
+                <th>City</t>
+		<th>Update</th>
+ </tr>
+        </thead>
+        <tbody>
+
+        {% for d in data %}
+
+                        <tr>
+                                <th>{{ d.parameter }}</th>
+                <th><a href="#">Edit</a>|<a href="#">Delete</a></th>
+
+                        </tr>
+
+        {% endfor %}
+        </tbody>
+</table>
+</div>
+</div>
+
+
+{% endblock %}
+
+
+
+

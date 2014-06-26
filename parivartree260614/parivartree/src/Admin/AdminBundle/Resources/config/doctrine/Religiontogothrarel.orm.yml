@@ -1,0 +1,22 @@
+Admin\AdminBundle\Entity\Religiontogothrarel:
+    type: entity
+    table: parivar_religiontogothrarel
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        religionid:
+            type: integer
+            length: '7'
+        communityid:
+            type: integer
+            length: '7'
+        parameter:
+            type: string
+            length: '60'
+        status:
+            type: integer
+            length: '7'
+            options:
+                default: 1

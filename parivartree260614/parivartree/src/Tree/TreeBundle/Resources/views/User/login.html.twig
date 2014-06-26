@@ -1,0 +1,28 @@
+
+
+<div class="col-md-5">
+ {{ form_start(form) }} 
+                    <div class="form-group">
+                       {{ form_label(form.email) }}
+                        {{ form_widget(form.email) }}
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                        {{ form_widget(form.rememerme) }}
+                        </label>
+                    </div>
+				</div>
+                <div class="col-md-5">
+                  <div class="form-group">
+                        {{ form_label(form.password) }}
+                       {{ form_widget(form.password) }}
+                    </div>
+                    <a href="#">Forgot Password</a>
+                </div>
+                <div class="col-md-2">
+                     {{ form_row(form.submit) }}
+                </div>
+
+ {{ form_end(form) }}
+</div>
+

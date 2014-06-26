@@ -1,0 +1,38 @@
+{% extends "AdminAdminBundle:Admin:headerw.html.twig" %}
+
+{% block body %} 
+
+<div class="container">	
+
+<div class="page-header">
+
+	<h4>User last accessed IP Adress</h4>
+
+</div>
+
+<div class="table-responsive user-details">
+
+
+
+<table class="table table-bordered">
+
+	<thead>
+
+	<tr>
+
+		<th>Login IP Address</th>
+		<th>Logout IP Adress</td>
+	</tr>
+	</thead>
+	<tbody>
+	{% for d in data %}
+		<tr>
+		<td>{{ d.login_ip }}</td>
+		<td>{{ d.logout_ip }}</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+</div>
+</div>
+{% endblock %}

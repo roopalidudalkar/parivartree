@@ -1,0 +1,168 @@
+tree_tree_homepage:
+    pattern:  /
+    defaults: { _controller:TreeTreeBundle:Home:index}
+tree_tree_mytree:
+    pattern: /mytree/{nodeid}
+    defaults: { _controller: TreeTreeBundle:User:mytree, nodeid : 0 }
+tree_tree_member_register:
+    pattern: /member/register
+    defaults: { _controller: TreeTreeBundle:User:register }
+tree_tree_sms_verify:
+    pattern: /smsverify/{mobilecode}/{userhash}/{attempt}
+    defaults: { _controller: TreeTreeBundle:User:smsverify, attempt : 1}
+tree_tree_sms_resend:
+    pattern: /sms/resend/{userhash}
+    defaults: { _controller: TreeTreeBundle:User:smsresend }
+tree_tree_login:
+   pattern: /login
+   defaults: { _controller: TreeTreeBundle:User:login }
+tree_tree_logout:
+   pattern: /logout
+   defaults: { _controller: TreeTreeBundle:User:logout }
+admin_admin_login:
+    pattern: /directorship
+    defaults: { _controller: AdminAdminBundle:Admin:login }
+tree_tree_addnode:
+    pattern: /node/add/{nodeid}/{relationid}/{relnodeid}
+    defaults: { _controller: TreeTreeBundle:Tree:addnode, relnodeid : 0 }
+admin_admin_dashboard:
+    pattern: /directorship/dashboard
+    defaults: { _controller: AdminAdminBundle:Admin:dashboard }   
+admin_admin_userdetails:
+    pattern: /directorship/userdetails/{offset}
+    defaults: { _controller: AdminAdminBundle:Admin:userdetails, offset : 1 }
+tree_tree_member_activate_email:
+    pattern: /member/emailactivation/{userid}/{userhash}
+    defaults: { _controller: TreeTreeBundle:User:emailactivation }
+tree_tree_member_change_password:
+    pattern: /member/chnagepassword/{sessionhash}/{attempt}
+    defaults: { _controller: TreeTreeBundle:User:changepassword, attempt : 0 }
+admin_admin_userprofile:
+    pattern: /directorship/userprofile/{id}
+    defaults: { _controller: AdminAdminBundle:Admin:userprofile}
+admin_admin_deleteuser:
+    pattern: /directorship/deleteuser/{id}
+    defaults: { _controller: AdminAdminBundle:Admin:deleteuser }
+admin_admin_updateuser:
+    pattern: /directorship/updateuser/{email}
+    defaults: { _controller: AdminAdminBundle:Admin:updateuser }
+tree_tree_test_node:
+    pattern: /test/node1
+    defaults: { _controller: TreeTreeBundle:Test:node1 }
+admin_admin_users:
+    pattern: /directorship/userprofile/{offset}
+    defaults: { _controller: AdminAdminBundle:Admin:users }
+admin_admin_update_user_data:
+    pattern: /directorship/updateuserdata/
+    defaults: { _controller: AdminAdminBundle:Admin:updateuserdata }
+tree_tree_updateprofile:
+    pattern: /member/updateprofile/
+    defaults: { _controller: TreeTreeBundle:User:updateprofile }
+tree_tree_member_block_from_chat:
+   pattern: /member/blockfromchat/{userid}
+   defaults: { _controller: TreeTreeBundle:User:blockfromchat }
+admin_admin_religion:
+   pattern: /directorship/religion/{offset}
+   defaults: { _controller: AdminAdminBundle:Admin:religion, offset : 1 }
+admin_admin_addcommunity:
+   pattern: /directorship/addcommunity/{id}
+   defaults: { _controller: AdminAdminBundle:Admin:addcommunity }
+admin_admin_addreligion:
+   pattern: /directorship/addreligion/
+   defaults: { _controller: AdminAdminBundle:Admin:addreligion }
+admin_admin_deletereligion:
+   pattern: /directorship/deletereligion/{id}
+   defaults: { _controller: AdminAdminBundle:Admin:deletereligion }
+admin_admin_editreligion:
+   pattern: /directorship/editreligion/{id}
+   defaults: { _controller: AdminAdminBundle:Admin:editreligion } 
+admin_admin_community:
+   pattern: /directorship/community/{offset}
+   defaults: { _controller: AdminAdminBundle:Admin:community, offset : 1 }
+tree_tree_blocklist:
+   pattern: /blocklist/
+   defaults: { _controller: TreeTreeBundle:User:blocklist }
+admin_admin_communityadd:
+   pattern: /directorship/communityadd/
+   defaults: { _controller: AdminAdminBundle:Admin:communityAdd }
+admin_admin_deletecommunity:
+   pattern: /directorship/deletecommunity/{id}
+   defaults: { _controller: AdminAdminBundle:Admin:deletecommunity }
+admin_admin_editcommunity:
+   pattern: /directorship/editcommunity/{id}
+   defaults: { _controller: AdminAdminBundle:Admin:editcommunity }
+admin_admin_addgothra:
+   pattern: /directorship/addgothra/{id}
+   defaults: { _controller: AdminAdminBundle:Admin:addgothra }
+admin_admin_gothra:
+   pattern: /directorship/gothra/{offset}
+   defaults: { _controller: AdminAdminBundle:Admin:gothra, offset : 1 }
+admin_admin_deletegothra:
+   pattern: /directorship/deletegothra/{id}
+   defaults: { _controller:AdminAdminBundle:Admin:deletegothra }
+admin_admin_editgothra:
+   pattern: /directorship/editgothra/{id}
+   defaults: { _controller:AdminAdminBundle:Admin:editgothra }
+admin_admin_gothraadd:
+   pattern: /directorship/gothraadd/
+   defaults: { _controller: AdminAdminBundle:Admin:gothraadd }
+tree_tree_rollback:
+   pattern: /rollback
+   defaults: { _controller: TreeTreeBundle:User:rollback }
+admin_admin_viewcommunity:
+   pattern: /directorship/viewcommunity/{id}
+   defaults: { _controller: AdminAdminBundle:Admin:viewcommunity }
+admin_admin_inactiveusers:
+   pattern: /directorship/inactiveusers/{offset}
+   defaults: { _controller: AdminAdminBundle:Admin:inactiveusers,offset : 1 }
+admin_admin_lastaccessed:
+   pattern: /directorship/lastaccessed/{id}
+   defaults: { _controller: AdminAdminBundle:Admin:lastaccessed }
+tree_tree_events:
+   pattern: /events
+   defaults: { _controller: TreeTreeBundle:Event:index }
+tree_tree_event:
+   pattern: /event/{hash}
+   defaults: { _controller: TreeTreeBundle:Event:loadEvent }
+tree_tree_event_add:
+   pattern: /add/event
+   defaults: { _controller: TreeTreeBundle:Event:addevent }
+tree_tree_messages:
+   pattern: /messages
+   defaults: { _controller: TreeTreeBundle:Message:index }
+tree_tree_event_join:
+   pattern: /join/event/{id}/{author}/{event}
+   defaults: { _controller: TreeTreeBundle:Event:joinevent }
+tree_tree_event_maybe:
+   pattern: /maybe/event/{id}/{author}/{event}
+   defaults: { _controller: TreeTreeBundle:Event:maybeevent }
+tree_tree_event_decline:
+   pattern: /decline/event/{id}/{author}/{event}
+   defaults: { _controller: TreeTreeBundle:Event:declineevent }
+tree_tree_wall: 
+   pattern: /wall/
+   defaults: { _controller: TreeTreeBundle:Wall:index }
+admin_admin_viewtree:
+   pattern: /directorship/viewtree/{nodeid}
+   defaults: { _controller: TreeTreeBundle:User:mytree, nodeid : 0 }
+tree_tree_mytree1:
+   pattern: /mytree1/{nodeid}
+   defaults: { _controller: TreeTreeBundle:Test:mytree, nodeid : 0 }
+tree_tree_mytreeJson:
+   pattern: /somepattern/{nodeid}
+   defaults: { _controller: TreeTreeBundle:Test:mytreeJson, nodeid : 0 }
+admin_admin_country:
+   pattern: /directorship/country/{offset}
+   defaults: { _controller: AdminAdminBundle:Admin:country, offset : 1 }
+admin_admin_state:
+   pattern: /directorship/state/{id}
+   defaults: { _controller: AdminAdminBundle:Admin:state }
+admin_admin_city:
+   pattern: /directorship/city/{id}
+   defaults: { _controller: AdminAdminBundle:Admin:city }
+admin_admin_viewcity:
+   pattern: /directorship/viewcity/{id}
+   defaults: { _controller: AdminAdminBundle:Admin:viewcity }
+tree_tree_searchuser:
+   pattern: /search/{value}
+   defaults: { _controller: TreeTreeBundle:User:searchuser }

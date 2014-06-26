@@ -1,0 +1,47 @@
+Tree\TreeBundle\Entity\Event:
+    type: entity
+    table: parivar_event
+    id: 
+        id: 
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        eventhash:
+            type: string
+            length: 18
+        event: 
+            type: integer
+            length: '7'
+        eventdate:
+            type: date
+        eventtype: 
+            type: integer
+            length: '7'
+            nullable: TRUE
+        eventname:
+            type: string
+            length: '40'
+            nullable: TRUE
+        eventdescription:
+            type: text
+            nullable: TRUE
+        eventstart: 
+            type: time
+            nullable: TRUE
+        eventend:
+            type: time
+            nullable: TRUE
+        eventrule:
+            type: integer
+        created:
+            type: datetime
+        updated:
+            type: datetime
+        author:
+            type: integer
+        eventstatus:
+            type: integer
+            lenth: '7'
+        
+            
+            

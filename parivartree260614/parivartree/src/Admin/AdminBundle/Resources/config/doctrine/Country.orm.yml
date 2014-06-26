@@ -1,0 +1,25 @@
+Admin\AdminBundle\Entity\Country:
+    type: entity
+    table: parivar_country
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        countryid:
+            type: integer
+            length: '7'
+        stateid:
+            type: integer
+            length: '7'
+        cityid:
+            type: integer
+            length: '7'
+        parameter:
+            type: string
+            length: '60'
+        status:
+            type: integer
+            length: '7'
+
+

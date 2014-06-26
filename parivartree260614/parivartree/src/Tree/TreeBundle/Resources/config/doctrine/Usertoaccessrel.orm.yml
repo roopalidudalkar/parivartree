@@ -1,0 +1,17 @@
+Tree\TreeBundle\Entity\Usertoaccessrel:
+    type: entity
+    table: parivar_usertoaccessrel
+    id:
+        id: 
+            type: integer
+            generator: { strategy: AUTO }
+            length: '7'
+    fields: 
+        userid: 
+            type: integer
+            length: '7'
+        login_time: 
+            type: datetime
+        logout_time:
+            type: datetime
+            nullable: TRUE        

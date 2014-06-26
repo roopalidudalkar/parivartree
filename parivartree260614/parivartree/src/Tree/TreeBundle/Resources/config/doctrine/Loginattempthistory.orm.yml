@@ -1,0 +1,17 @@
+Tree\TreeBundle\Entity\Loginattempthistory:
+    type: entity
+    table: parivar_loginattempthistory
+    id: 
+        id: 
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        userid:
+            type: integer
+            length: '7'
+        attempted:
+            type: datetime
+        ip:
+            type: string
+            length: '20'
+

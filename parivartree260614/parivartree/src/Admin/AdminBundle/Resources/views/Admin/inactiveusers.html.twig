@@ -1,0 +1,186 @@
+{% extends "AdminAdminBundle:Admin:headerw.html.twig" %}
+
+{% block body %} 
+<script type="text/javascript">
+ function deletefunc(id,firstname){
+
+	var con = confirm('Are you sure to delete '+firstname+' ? The record once deleted cannot be retrived back');
+
+	if(con){
+
+		var url = "{{ path('admin_admin_deleteuser',{'id': "ID"}) }}";
+
+		var urlset = url.replace('ID', id);
+
+			window.open(urlset,"_self");
+
+		return true;
+
+	}else{
+
+		return false;
+
+	}
+
+ }
+
+</script>	
+
+	
+
+<div class="container">	
+
+<div class="page-header">
+
+	<h4>User Details</h4>
+
+</div>
+
+<div class="row admin-header-btn">
+	 <a class="btn btn-primary pull-right" href="{{ path('admin_admin_userdetails') }}">Active Users</a>
+	<a class="btn btn-primary pull-right" href="{{ path('admin_admin_inactiveusers') }}">Inactive Users</a>
+</div>
+
+
+<div class="table-responsive user-details">
+
+
+
+<table class="table table-bordered">
+
+	<thead>
+
+	<tr>
+
+		<th>Firstname</th>
+
+		<th>Email</th>
+
+		<th>Created Date</th>
+
+		<th>Updated Date</th>
+
+		<th>Last Accessed</th>
+
+		<th>Last Accessed IP</th>
+
+		<th>Status</th>
+
+		<th>Update</th>
+
+	</tr>
+
+	</thead>
+
+	<tbody>
+
+	{% for c in userdata %}
+
+	
+
+	<tr>
+
+		<td>{{ c.firstname }}</td>
+
+		<td><a href="{{ path('admin_admin_userprofile',{'id': c.id}) }}">{{ c.email }}</a></td>
+
+		<td>{{ c.created | date('Y-m-d h:i:s') }}</td>
+
+		<td>{{ c.updated | date('Y-m-d h:i:s') }}</td>
+
+		<td>{{ c.last_access | date('Y-m-d h:i:s') }}</td>
+
+		<td>{{ c.last_access_ip }}</td>
+
+		<td>{% if c.status == 0 %} Inactive {% elseif c.status == 1 %} Active {% endif %}</td>
+
+		<td><a href="{{ path('admin_admin_updateuser',{'email':c.email}) }}">Edit</a> | <a href="#" onclick="deletefunc('{{ c.id }}','{{ c.firstname }}')">Delete</a></td>
+
+	</tr>
+
+	
+
+	
+
+	{% endfor %}</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+
+<div class="container">
+
+<div>Now showing : {{ from }} to {{ to }} records</div>
+
+<div>{% set page_count = -count//10 %} 
+
+<ul class="pagination">
+
+{% if check == 0 %}
+
+<li><a href="{{ path('admin_admin_inactiveusers',{'offset':1}) }}">&laquo;</    a></li>
+ 
+ {% for i in 1..-(page_count) %}
+ 
+ 
+   
+   <li><a href="{{ path('admin_admin_inactiveusers',{'offset':i}) }}">{{ i }}</    a></li>
+ 
+ 
+ 
+ {% endfor %} 
+ 
+   
+<li><a href="{{ path('admin_admin_inactiveusers',{'offset':-(page_count)})}}">&raquo;</a></li>
+
+{% else %}
+
+  <li><a href="{{ path('admin_admin_userdetails',{'offset':1}) }}">&laquo;</a></li>
+
+{% for i in 1..-(page_count) %}
+
+
+
+  <li><a href="{{ path('admin_admin_userdetails',{'offset':i}) }}">{{ i }}</a></li>
+
+
+
+{% endfor %}
+
+   
+
+  <li><a href="{{ path('admin_admin_userdetails',{'offset':-(page_count)}) }}">&raquo;</a></li>
+{% endif %}
+</ul>
+
+</div>
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

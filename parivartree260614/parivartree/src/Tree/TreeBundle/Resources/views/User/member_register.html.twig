@@ -1,0 +1,109 @@
+{% extends '::base.html.twig' %}
+
+
+{% block register %}
+<div class="container">
+	{% for flashMessage in app.session.flashbag.get('error') %}
+
+	<div class="alert alert-danger">{{ flashMessage }}</div>
+		
+	{% endfor %}
+
+	{% for flashMessage in app.session.flashbag.get('success') %}
+
+	<div class="alert alert-success">{{ flashMessage }}</div>
+		
+	{% endfor %}
+	{% for flashMessage in app.session.flashbag.get('message') %}
+
+	<div class="alert alert-success">{{ flashMessage }}</div>
+		
+	{% endfor %}
+		{{ form_start(form) }}
+<div class="row form-group">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="First Name">
+                                   
+                                </div>
+                                <div class="col-md-6">
+                                 <input type="text" class="form-control" placeholder="Last Name">
+
+                                </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="form-group">
+                                   {{ form_widget(form.email) }}
+                                    </div>
+                                    <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Re-enter Email">
+                                    </div>
+                                   <div class="form-group">
+										<input type="password" class="form-control" placeholder="Password">
+                                   </div>
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                    <select class="form-control">
+                                      <option>1</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                    </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                      <select class="form-control">
+                                      <option>1</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                    </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                      <select class="form-control">
+                                      <option>1</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                    </select>
+                                    
+                                    </div>
+                                    <div class="col-md-3">
+                                      Date of Birth
+                                    </div>
+                                </div>
+                                <div class="row">
+                                <div class="control-group">
+                              <label class="control-label" for="radios"></label>
+                              <div class="controls">
+                                <label class="radio inline" for="radios-0">
+                                  <input name="radios" id="radios-0" value="Male" checked="checked" type="radio">
+                                  Male
+                                </label>
+                                <label class="radio inline" for="radios-1">
+                                  <input name="radios" id="radios-1" value="Female" type="radio">
+                                  Female
+                                </label>
+  </div>
+</div>
+                                
+                                
+                                </div>
+                                <div class="row form-group">
+                                <p>By clicking Sign Up, you agree to our Terms and that you have read 
+our Data Use Policy, including our Cookie Use.</p>
+                                
+                                </div>
+                                <div class="row form-group">
+                                    {{ form_row(form.submit , {'label':'Sign Up'}) }}
+                                
+                                </div>
+
+
+		{{ form_end(form) }}
+
+</div>
+{% endblock %}

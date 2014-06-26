@@ -1,0 +1,376 @@
+{% extends '::base_inner.html.twig' %}
+
+{% block mainbody %}
+
+<script>
+jQuery(document).ready(function(){
+$('#right').animate({ left: 250 }, 'slow', function() {
+				$('#button').html('Less');
+			});
+	$('#button').toggle( 
+		function() {
+			$('#right').animate({ left: 0 }, 'slow', function() {
+				$('#button').html('More');
+			});
+		}, 
+		function() {
+			$('#right').animate({ left: 250 }, 'slow', function() {
+				$('#button').html('Less');
+			});
+		}
+	);
+
+
+$('#form_search').autocomplete({
+		      	source: function( request, response ) {
+		      		$.ajax({
+		      			url : '{{ asset("admin_admin_searchuser") }}',
+		      			datatype : "json",
+						data: {
+						   SearchParameter: request.term
+						},
+						 success: function( data ) {
+							 response( $.map( data, function( item ) {
+								return {
+									label: item,
+									value: item
+								}
+							}));
+						}
+		      		});
+		      	},
+		      	autoFocus: true,
+		      	minLength: 3     	
+		      });
+});
+</script>
+
+
+		{# {{ dump(notifs) }} #}
+		{#  {{ dump(tree) }}  #}
+		{% for value in tree %}
+			{% for subvalue in value %}
+				{# {{ subvalue['relationid'] }} #}
+			{% endfor %}
+		{% endfor %}
+
+		{% set iterated = 0 %}
+		{% set fatheriterated = 0 %}
+		{% set spouseiterated = 0 %}
+		{% set motheriterated = 0 %}
+		{% set childexists = 0 %}
+		{% for value in tree %}
+			{% for subvalue in value %}
+				{% if (subvalue['relationid']==6) or  (subvalue['relationid']==7) %}
+					{% set childexists = 1%}
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+		
+<div id="notification-left" class="col-md-3">
+		<div class="notification-item-block">
+			<h1>Members</h1>
+			 <div class="row">
+                                                              <div class="col-md-4 margin-btm-10x">
+                                    <a href="profile.php?view_user_id=299"> 
+                                        <img src="images/profile.jpg" class="img-round img-responsive" alt="" data-img="images/profile.jpg" data-relation="7Brother In Law" data-name="Christy" rel="popover" data-placement="bottom" /></a>
+                                </div>
+                                                                <div class="col-md-4 margin-btm-10x">
+                                    <a href="profile.php?view_user_id=286"> 
+                                        <img src="images/profile.jpg" class="img-round img-responsive" alt="" data-img="images/profile.jpg" data-relation="-1Mother" data-name="Daisy" rel="popover" data-placement="bottom" /></a>
+                                </div>
+                                                                <div class="col-md-4 margin-btm-10x">
+                                    <a href="profile.php?view_user_id=301"> 
+                                        <img src="images/profile.jpg" class="img-round img-responsive" alt="" data-img="images/profile.jpg" data-relation="1Brother" data-name="DiFla" rel="popover" data-placement="bottom" /></a>
+                                </div>
+                                                                <div class="col-md-4 margin-btm-10x">
+                                    <a href="profile.php?view_user_id=193"> 
+                                        <img src="images/profile.jpg" class="img-round img-responsive" alt="" data-img="images/profile.jpg" data-relation="Self" data-name="Dijo" rel="popover" data-placement="bottom" /></a>
+                                </div>
+                                                                <div class="col-md-4 margin-btm-10x">
+                                    <a href="profile.php?view_user_id=298"> 
+                                        <img src="images/profile.jpg" class="img-round img-responsive" alt="" data-img="images/profile.jpg" data-relation="1Sister" data-name="Dona" rel="popover" data-placement="bottom" /></a>
+                                </div>
+                                                                <div class="col-md-4 margin-btm-10x">
+                                    <a href="profile.php?view_user_id=285"> 
+                                        <img src="images/profile.jpg" class="img-round img-responsive" alt="" data-img="images/profile.jpg" data-relation="1Brother" data-name="Flamin" rel="popover" data-placement="bottom" /></a>
+                                </div>
+                                  
+                      </div>
+                         
+		</div>
+      <div class="notification-item-block">
+	  		<h1>Family Events</h1>
+	  		{% if eventdata is empty %}
+				<p>No Events<a href="#"> Click here</a> to be the first person to create the events.</p>
+			{% else %}
+				{% for e in eventdata %}
+				<div class="event-user">
+					<div class="thumb"></div>
+					<div class="event-user-cont">
+							<p><a href="{{ path('tree_tree_events',{'hash':e.id} )}}">{{ e.firstname}} {{ e.lastname }} has {{ e.eventname }} on 
+							
+								{% if "now"|date('Y') == e.eventdate|date('Y') %} 
+									{% if "now"|date('d') == e.eventdate|date('d') %}
+										{{ e.eventdate|date('h:i a') }}
+									{% else %}
+										{{ e.eventdate|date('dS M h:i a') }}
+									{% endif %}
+								{% else %} 
+										{{ e.eventdate|date('dS M  Y h:i a') }} 
+								{% endif %}							
+							
+							</a></p>
+					</div>
+				</div>
+				{% endfor %}		
+			{% endif %}
+	  </div>
+	   <div class="notification-item-block">
+	  		<h1>Activity Stream</h1>
+			<div class="message-content-notification">
+					<p> Anup Vaze has posted  on your wall.</p>
+			</div>
+			<div class="message-content-notification">
+					<p> Anup Vaze has posted  on your wall.</p>
+			</div>
+			<div class="message-content-notification">
+					<p> Anup Vaze has posted  on your wall.</p>
+			</div>
+			<div class="message-content-notification">
+					<p> Anup Vaze has posted  on your wall.</p>
+			</div>
+	  </div>
+	  
+</div>
+
+
+
+
+<div class="treecontainer col-md-9" id="right">
+<div id="menubar">
+            <div id="button">
+                Less
+            </div>
+</div>
+	<ul id="org" style="display:none" >
+		{% for value in tree %}
+			{% for subvalue in value %}
+				{%if (subvalue['relationid']==1) or (subvalue['relationid']==2)  %}
+					{%if (subvalue['relationid']==1) %}
+							{% if motheriterated == 0 %}
+								<li id="father">
+							{% endif%}			
+							{% for keyid, fathers in subvalue['params'] %}
+								<span class="spouse" style="display:none;"> 
+									<span class="{% if fathers['login_status']==1 %}online-active{% else %}online-Inactive{% endif %}"><a href="#"></a></span>
+									<span class="add-relation"><a href="#"></a></span>
+									<div class="profile-img"><a href="#"></a></div>
+									<div class="Node-title" id="{{ fathers['id'] }}">{{ fathers['firstname'] }} {{ fathers['lastname'] }}</div>
+									<div class="Node-loc"><span></span><a href="#">{{ fathers['city'] }}</a></div>
+									<div class="Node-bottom" style="display:none;">
+										<div class="Node-block photo"><a href="#"></a></div>
+										<div class="Node-block mail" onclick="javascript:chatWith('{{ fathers["id"] }}','{{ fathers["firstname"] }} {{ fathers["lastname"] }}');" ><a href="#" ></a></div>
+										<div class="Node-block video"><a href="#"></a></div>
+										<div class="Node-block invite"><a href="#">invite</a></div>
+									</div>	
+								</span>
+							{% endfor %}
+							{% set fatheriterated = 1 %}
+					{% else %}
+							{% if fatheriterated == 0 %}
+								<li id="father">
+							{% endif%}
+							{% for keyid, spousedata in subvalue['params'] %}
+								<span class="spouse" style="display:none;"> 
+									
+									<span class="{% if spousedata['login_status']==1 %}online-active{% else %}online-Inactive{% endif %}"><a href="#"></a></span>
+									<span class="add-relation"><a href="#"></a></span>
+									<div class="profile-imgfe" ><a href="#"></a></div>
+									<div class="Node-title" id="{{ spousedata['id'] }}">{{ spousedata['firstname'] }} {{ spousedata['lastname'] }}</div>
+									<div class="Node-loc"><span></span><a href="#">{{ spousedata['city'] }}</a></div>
+									<div class="Node-bottom" style="display:none;">
+										<div class="Node-block photo"><a href="#"></a></div>
+										<div class="Node-block mail" onclick="javascript:chatWith('{{ spousedata["id"] }}','{{ spousedata["firstname"] }} {{ spousedata["lastname"] }}');" ><a href="#"></a></div>
+										<div class="Node-block video"><a href="#"></a></div>
+										<div class="Node-block invite"><a href="#">invite</a></div>
+									</div>
+								</span>
+							{% endfor %}
+							{% set motheriterated = 1 %}
+								<ul>	
+					{%endif%}		
+				{% elseif (subvalue['relationid']==0) or (subvalue['relationid']==3) or  (subvalue['relationid']==4) or  (subvalue['relationid']==5) or  (subvalue['relationid']==6) or  (subvalue['relationid']==7)  or  (subvalue['relationid']==8) %}
+					{% if (subvalue['relationid']==0) or (subvalue['relationid']==3) or  (subvalue['relationid']==6) or  (subvalue['relationid']==7) or  (subvalue['relationid']==8) %}
+						{% if (subvalue['relationid']==0) %}
+							{% if motheriterated == 0 %}
+								<ul>	
+							{% endif %}
+								<li id="son">
+									<span class="{% if subvalue['login_status']==1 %}online-active{% else %}online-Inactive{% endif %}"><a href="#"></a></span>
+									<span class="add-relation"><a href="#"></a></span>
+									<div class="{% if subvalue['gender'] == 1 %}profile-img{% else%}profile-imgfe{% endif %}" id="{{ subvalue['gender'] }}"><a href="#"></a></div>
+									<div class="Node-title" id="{{ subvalue['id'] }}">You</div>
+									<div class="Node-loc"><span></span><a href="#">{{ subvalue['city'] }}</a></div>
+									<div class="Node-bottom" style="display:none;">
+										<div class="Node-block photo"><a href="#"></a></div>
+										<div class="Node-block mailhidden"><a href="#"></a></div>
+										<div class="Node-block video"><a href="#"></a></div>
+										<div class="Node-block invite"><a href="#">invite</a></div>
+									</div>
+					{% elseif (subvalue['relationid']==3) or (subvalue['relationid']==8) or (subvalue['relationid']==6) or  (subvalue['relationid']==7)%}
+						{% if (subvalue['relationid']==3) or (subvalue['relationid']==8) %}
+							{% for keyid, spousedata in subvalue['params'] %}		
+								<span class="wH" style="display:none;">
+									<span class="{% if spousedata['login_status']==1 %}online-active{% else %}online-Inactive{% endif %}"><a href="#"></a></span>
+									<span class="add-relation"><a href="#"></a></span>
+									<div class="{% if spousedata['relationid']==3 %}profile-imgfe{% else %}profile-img{% endif %}" ><a href="#"></a></div>
+									<div class="Node-title" id="{{ spousedata['id'] }}">{{ spousedata['firstname'] }} {{ spousedata['lastname'] }}</div>
+									<div class="Node-loc"><span></span><a href="#">{{ spousedata['city'] }}</a></div>
+										<div class="Node-bottom" style="display:none;">
+										<div class="Node-block photo"><a href="#"></a></div>
+										<div class="Node-block mail" onclick="javascript:chatWith('{{ spousedata["id"] }}','{{ spousedata["firstname"] }} {{ spousedata["lastname"] }}');"><a href="#"></a></div>
+										<div class="Node-block video"><a href="#"></a></div>
+										<div class="Node-block invite"><a href="#">invite</a></div>
+									</div>										
+								</span>
+							{% endfor %}
+								<ul>
+							{% set spouseiterated = 1%}
+						{% endif %}
+					{% if (subvalue['relationid']==6) or  (subvalue['relationid']==7) %}
+							{% if spouseiterated == 0 %}
+								<ul>
+							{% endif %}
+							{% for keyid, childata in subvalue['params'] %}
+								<li id="child" class="child">								
+									<span class="{% if childata['login_status']==1 %}online-active{% else %}online-Inactive{% endif %}"><a href="#"></a></span>
+									<span class="add-relation"><a href="#"></a></span>
+									<div class="{% if childata['relationid'] == 7%}profile-imgfe{% else %}profile-img{% endif %}"><a href="#"></a></div>
+									<div class="Node-title" id="{{ childata['id'] }}">{{ childata['firstname'] }} {{ childata['lastname'] }}</div>
+									<div class="Node-loc"><span></span><a href="#">{{ childata['city'] }}</a></div>
+									<div class="Node-bottom" style="display:none;">
+										<div class="Node-block photo"><a href="#"></a></div>
+										<div class="Node-block mail" onclick="javascript:chatWith('{{ childata["id"] }}','{{ childata["firstname"] }} {{ childata["lastname"] }}');"><a href="#"></a></div>
+										<div class="Node-block video"><a href="#"></a></div>
+										<div class="Node-block invite"><a href="#">invite</a></div>
+									</div>
+								</li>
+							{% endfor %}
+							{% if (spouseiterated == 1) or (childexists == 1) %}
+								</ul>
+							{% endif %}
+								</li>
+							{% set iterated = 1 %}
+					{% endif %}	
+						{% if (iterated == 0) and (childexists == 0) %}			
+							{% if spouseiterated == 1%}
+								</ul>
+							{% endif %}
+								</li>
+							{% set iterated = 1 %}
+									
+								{% endif %}
+							{% endif %}
+					{% elseif  (subvalue['relationid']==4) or  (subvalue['relationid']==5) %}
+								<li>
+									<span class="{% if subvalue['login_status']==1 %} online-active {% else %} online-Inactive {% endif %}"><a href="#"></a></span>
+									<span class="add-relation"><a href="#"></a></span>
+									<div class="{% if subvalue['relationid'] == 5%}profile-imgfe{% else %}profile-img{% endif %}"><a href="#"></a></div>
+									<div class="Node-title" id="{{ subvalue['id'] }}">{{ subvalue['firstname'] }} {{ subvalue['lastname'] }}</div>
+									<div class="Node-loc"><span></span><a href="#">{{ subvalue['city'] }}</a></div>
+									<div class="Node-bottom" style="display:none;">
+										<div class="Node-block photo"><a href="#"></a></div>
+										<div class="Node-block mail" onclick="javascript:chatWith('{{ subvalue["id"] }}','{{ subvalue["firstname"] }} {{ subvalue["lastname"] }}');"><a href="#"></a></div>
+										<div class="Node-block video"><a href="#"></a></div>
+										<div class="Node-block invite"><a href="#">invite</a></div>
+									</div>					
+								</li>
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+		</ul></li>
+	</ul>          
+    
+    <div id="chart" class="orgChart"></div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="AddNode" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-addnode">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalFormLabel"></h4>
+			</div>
+			<div class="modal-body">
+				{{ form_start(addnodeform) }}
+				<div class="form-group search-people" id="form_search">
+                     <div> {{ form_widget(addnodeform.search) }}</div>
+                </div>
+				
+				<div class="or"><span>OR</span></div>
+				<div class="search-by-fields">
+				<div class="form-group">
+					<div>{{ form_label(addnodeform.email) }}  {{ form_widget(addnodeform.email) }}</div>
+				</div>
+				<div class="form-group">
+					<div>{{ form_label(addnodeform.firstname) }} {{ form_widget(addnodeform.firstname) }}</div>
+				</div>
+				<div class="form-group">
+					<div>{{ form_label(addnodeform.lastname) }} {{ form_widget(addnodeform.lastname) }}</div>
+				</div>
+				<div class="form-group">
+					<div>{{ form_label(addnodeform.mobile) }} {{ form_widget(addnodeform.mobile) }}</div>
+				</div>
+				<div class="form-group">
+                    <div>{{ form_label(addnodeform.community) }} {{ form_widget(addnodeform.community) }}</div>
+                </div>
+				<div class="form-group">
+                    <div>{{ form_label(addnodeform.city) }} {{ form_widget(addnodeform.city) }}</div>
+                </div>
+				<div class="form-group">
+					<div>	{{ form_row(addnodeform.submit) }} </div>
+				</div>
+				</div>
+				
+				{{ form_end(addnodeform) }}
+			</div>
+		</div>
+	</div>
+</div>  
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-addnode">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Choose your new Relationship</h4>
+			</div>
+			<div class="modal-body add-rel">
+				<div class="add-node-relation">
+					<div class="parents-top">
+						<div class="father btn" id="modalpop-1"> <a href="#">Father</a></div> 
+						<div class="mother btn" id="modalpop-2"> <a href="#">Mother</a></div>
+					</div>
+					<div class="siblings-middle">
+						<div class="brother btn" id="modalpop-4"> <a href="#">Brother</a></div> 
+						<div class="part-me"></div> 
+						<div class="sister btn" id="modalpop-5"> <a href="#">Sister</a></div>
+					</div>
+					<div class="children-bottom">
+						<div class="son btn" id="modalpop-6"><a href="#">Son</a></div>
+						<div class="daughter btn" id="modalpop-7"><a href="#">Daughter</a></div>
+					</div>
+					<div class="children-bottom">
+						<div class="spouse btn" id="modalpop-3"><a href="#">Spouse</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>   
+
+{% endblock %}

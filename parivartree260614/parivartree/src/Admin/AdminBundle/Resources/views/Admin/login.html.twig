@@ -1,0 +1,31 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	{% for flashMessage in app.session.flashbag.get('error') %}
+	
+		{{ flashMessage }}
+
+	{% endfor %}
+
+ 
+	{% block login %}
+	<div class="admin-container">
+		<h2 class="form-signin-heading">Parivar Tree Administrator Log In</h2>
+		<div class="container admin-block">
+			<div class="form-signin">
+			{{ form_start(form) }}
+				<div class="row">
+					<div class="col-md-6">{{ form_widget(form.email) }}</div>
+					<div class="col-md-6">{{ form_widget(form.password) }}</div>
+				</div>
+				<div class="row margin-clear">
+					<div class="admin-submit">{{ form_row(form.Submit) }}</div>
+				</div>
+		{{ form_end(form) }}
+			</div>
+		</div>
+	{% endblock %}
+{% endblock %}
+
+
+ 

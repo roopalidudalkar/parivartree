@@ -1,0 +1,248 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<div class="header-top-block">
+	<div class="container">
+		<div class="col-md-2"><a href="#"><img src="{{ asset('img/logo1.png') }}" ></a></div>
+		<div class="col-md-4 search-bar clear-both">
+			<form class="navbar-form form-group" method="post" action="search-result.php">
+				<input class="form-control" type="text" value="" placeholder="Search People" required="" name="srch">
+			</form>
+		</div>
+		<div class="col-md-2 profile-name">
+			<span></span><h4>Profile Name</h4>
+		</div>
+		<div class="col-md-2 mess-block">
+			<ul>
+				<li class="active"><a href="#"><img src="{{asset ('img/message.png') }}" ><span>16</span></a></li>
+				<li><a href="#"><img src="{{asset ('img/notification.png') }}" ><span>2</span></a></li>
+			</ul>
+		</div>
+		<div class="col-md-2 menu">
+			<ul>
+				<li><a href="#">Tree View</a></li>
+				<li><a href="#">Gallery</a></li>
+				<li><a href="#/">Timeline</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="container events-block innerpage">
+	<div class="col-md-9 clear-both border-right">
+	<div class="timeline-container">
+		<div class="col-md-4">
+			<div class="user-profile-img"></div>
+			<div class="user-title">Rahul Heaven</div>
+		</div>
+		<div class="col-md-8">
+			<div class="timeline-share">
+				<textarea class="form-control"></textarea>
+			</div>
+			<div class="timeline-but clear-both">
+				<div class="col-md-6 up-load"><a href="#" class="upload-photo">Photo</a><a href="#" class="upload-video">Video</a></div>
+				<div class="col-md-6 share-but"><select class="form-control"></select><button class="btn btn-primary btn-sm" type="button">Share</button></div>
+				
+			</div>
+		</div>
+	</div>
+		<div class="wall-container">
+			<div class="col-md-4 clear-both ">
+				<div class="wall-cont">
+					<div class="wall-extra"></div>
+					<div class="wall-content">
+						<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </p>
+						<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </p>
+						<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </p>
+					</div>
+					<div class="wall-comment"> comment like share </div>
+					<div class="wall-user">
+						<div class="wall-thumb"></div>
+						<div class="wall-thumb-time">User Name</div>
+						
+					</div>
+				</div>
+				
+				<div class="wall-cont">
+					<div class="wall-extra"></div>
+					<div class="wall-content">
+						<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </p>
+						<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </p>
+					</div>
+					<div class="wall-comment"> comment like share </div>
+					<div class="wall-user">
+						<div class="wall-thumb"></div>
+						<div class="wall-thumb-time">User Name</div>
+						
+					</div>
+				</div>
+				
+				
+			</div>
+			
+			
+			<div class="col-md-4 clear-both">
+				<div class="wall-cont">
+					
+					<div class="wall-content">
+						<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </p>
+						<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </p>
+						<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </p>
+					</div>
+					<div class="wall-comment"> comment like share </div>
+					<div class="wall-user">
+						<div class="wall-thumb"></div>
+						<div class="wall-thumb-time">User Name</div>
+						
+					</div>
+				</div>
+				<div class="wall-cont">
+					<div class="wall-extra"></div>
+					<div class="wall-content">
+						<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </p>
+						<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </p>
+					</div>
+					<div class="wall-comment"> comment like share </div>
+					<div class="wall-user">
+						<div class="wall-thumb"></div>
+						<div class="wall-thumb-time">User Name</div>
+						
+					</div>
+				</div>
+				<div class="wall-cont">
+					
+					<div class="wall-content">
+						<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </p>
+						
+					</div>
+					<div class="wall-comment"> comment like share </div>
+					<div class="wall-user">
+						<div class="wall-thumb"></div>
+						<div class="wall-thumb-time">User Name</div>
+						
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="col-md-4 clear-both">
+				<div class="wall-cont">
+					<div class="wall-extra"></div>
+					<div class="wall-content">
+						<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </p>
+						<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </p>
+					</div>
+					<div class="wall-comment"> comment like share </div>
+					<div class="wall-user">
+						<div class="wall-thumb"></div>
+						<div class="wall-thumb-time">User Name</div>
+						
+					</div>
+				</div>
+				<div class="wall-cont">
+					<div class="wall-extra"></div>
+					<div class="wall-content">
+						<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </p>
+						<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar </p>
+					</div>
+					<div class="wall-comment"> comment like share </div>
+					<div class="wall-user">
+						<div class="wall-thumb"></div>
+						<div class="wall-thumb-time">User Name</div>
+						
+					</div>
+				</div>
+			</div>
+			
+			
+		</div>
+
+	</div>
+	<div class="col-md-3 clear-both">
+		<div class="event-left-block">
+		<div class="events-header">Notification</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user unread">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			
+		</div>
+		<div class="event-left-block">
+		<div class="events-header">Notification</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user unread">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			<div class="event-user">
+				<div class="thumb"></div>
+				<div class="event-user-cont">
+					<h1>Rahul Heaven</h1>
+					<p>Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar Foo Bar</p>
+				</div>
+			</div>
+			
+		</div>
+		
+		
+		
+	</div>
+	
+</div>
+
+<div class="footer">
+	<div class="container">
+    	<div class="col-md-8"><p>Â© 2014 Parivartree | About | Privacy Policy | Terms & Conditions | FAQs | Campaigns</p></div>
+        <div class="col-md-4 follow">Follow us</div>
+    	
+    	
+    </div>
+	
+</div>
+
+
+
+
+
+{% endblock %}

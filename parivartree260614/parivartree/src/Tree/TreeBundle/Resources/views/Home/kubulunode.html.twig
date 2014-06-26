@@ -1,0 +1,84 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+	<div class="header-top-block">
+		<div class="container">
+			<div class="col-md-2"><a href="#"><img src="{{ asset('img/logo1.png') }}" ></a></div>
+			<div class="col-md-4 search-bar clear-both">
+				<form class="navbar-form form-group" method="post" action="search-result.php">
+					<input class="form-control" type="text" value="" placeholder="Search People" required="" name="srch">
+				</form>
+			</div>
+			<div class="col-md-2 profile-name">
+			<span></span>
+			<h4>Profile Name</h4>
+			</div>
+
+          <div class="col-md-2 mess-block">
+            <ul>
+			  <li class="active"><a href="#"><img src="{{asset ('img/message.png') }}" ><span>16</span></a></li>
+			  <li><a href="#"><img src="{{asset ('img/notification.png') }}" ><span>2</span></a></li>
+            </ul>
+          </div>
+		  <div class="col-md-2 menu">
+		  	<ul>
+				<li><a href="#">Tree View</a></li>
+				<li><a href="#">Gallery</a></li>
+				<li><a href="#/">Timeline</a></li>
+			</ul>
+		  </div>
+		</div>
+		
+		</div>
+	</div>
+	
+<div id="notification-left" class="col-md-3">
+      <div class="notification-item-block">
+	  		<h1>Family Notification</h1>
+			<p>eee eee eeeeeee eeeeee eee</p>
+			<p>eee eee eeeeeee eeeeee eee</p>
+			<p>eee eee eeeeeee eeeeee eee</p>
+			<p>eee eee eeeeeee eeeeee eee</p>
+			<p>eee eee eeeeeee eeeeee eee</p>
+			<p>eee eee eeeeeee eeeeee eee</p>
+	  </div>
+	   <div class="notification-item-block">
+	  		<h1>Activity Stream</h1>
+			<p>eee eee eeeeeee eeeeee eee</p>
+			<p>eee eee eeeeeee eeeeee eee</p>
+			<p>eee eee eeeeeee eeeeee eee</p>
+			<p>eee eee eeeeeee eeeeee eee</p>
+			<p>eee eee eeeeeee eeeeee eee</p>
+			<p>eee eee eeeeeee eeeeee eee</p>
+	  </div>
+	  
+</div>
+    <div id="right">
+        <div id="menubar">
+            <div id="button">
+                Menu
+            </div>
+        </div>
+            <div>eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee </div>
+    </div>
+	
+	<script>
+		$('#button').toggle( 
+    function() {
+        $('#right').animate({ left: 250 }, 'slow', function() {
+            $('#button').html('Less');
+        });
+    }, 
+    function() {
+        $('#right').animate({ left: 0 }, 'slow', function() {
+            $('#button').html('More');
+        });
+    }
+);
+	</script>
+
+     
+
+
+{% endblock %}

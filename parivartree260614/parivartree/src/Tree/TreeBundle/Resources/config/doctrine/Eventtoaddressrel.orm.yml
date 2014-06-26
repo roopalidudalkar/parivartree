@@ -1,0 +1,39 @@
+Tree\TreeBundle\Entity\Eventtoaddressrel:
+    type: entity
+    table: parivar_eventtoaddressrel
+    id:
+        id:
+            type: integer
+            generator: { strategy:AUTO }
+    fields:
+        eventid:
+            type: integer    
+            length: '7'
+        housenumber:
+            type: string
+            length: '12'
+            nullable: TRUE
+        streetnumber:
+            type: string
+            length: '12'
+            nullable: TRUE
+        pincode: 
+            type: integer
+            length: '7'
+            nullable: TRUE
+        location:
+            type: string
+            nullable: TRUE
+        city:
+            type: string
+        state: 
+            type: string
+        country: 
+            type: string
+        geomap:
+            type: integer
+            
+
+        
+     
+      
